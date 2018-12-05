@@ -1,0 +1,952 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>google-auth-library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">google-auth-library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>ADCCallback</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/auth/googleauth.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                            <a href="#call-declaration-1dda2d42516e546b22638e0639caac33">Unamed property</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Signature :</i>
+                                            <a name="call-declaration-1dda2d42516e546b22638e0639caac33"></a>
+                                            <code>
+                                                <!--ts.SyntaxKind.CallSignature-->
+                                                    [err: Error | null, credential: OAuth2Client, projectId: string | null]
+                                            </code>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Returns : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {AxiosRequestConfig, AxiosResponse} from &#x27;axios&#x27;;
+import {exec} from &#x27;child_process&#x27;;
+import * as crypto from &#x27;crypto&#x27;;
+import * as fs from &#x27;fs&#x27;;
+import * as gcpMetadata from &#x27;gcp-metadata&#x27;;
+import * as http from &#x27;http&#x27;;
+import * as os from &#x27;os&#x27;;
+import * as path from &#x27;path&#x27;;
+import * as stream from &#x27;stream&#x27;;
+import * as util from &#x27;util&#x27;;
+
+import * as messages from &#x27;../messages&#x27;;
+import {DefaultTransporter, Transporter} from &#x27;../transporters&#x27;;
+
+import {Compute} from &#x27;./computeclient&#x27;;
+import {CredentialBody, JWTInput} from &#x27;./credentials&#x27;;
+import {GCPEnv, getEnv} from &#x27;./envDetect&#x27;;
+import {JWT, JWTOptions} from &#x27;./jwtclient&#x27;;
+import {Headers, OAuth2Client, RefreshOptions} from &#x27;./oauth2client&#x27;;
+import {UserRefreshClient} from &#x27;./refreshclient&#x27;;
+
+export interface ProjectIdCallback {
+  (err?: Error|null, projectId?: string|null): void;
+}
+
+export interface CredentialCallback {
+  (err: Error|null, result?: UserRefreshClient|JWT): void;
+}
+
+export interface ADCCallback {
+  (err: Error|null, credential?: OAuth2Client, projectId?: string|null): void;
+}
+
+export interface ADCResponse {
+  credential: OAuth2Client;
+  projectId: string|null;
+}
+
+export interface GoogleAuthOptions {
+  /**
+   * Path to a .json, .pem, or .p12 key file
+   */
+  keyFilename?: string;
+
+  /**
+   * Path to a .json, .pem, or .p12 key file
+   */
+  keyFile?: string;
+
+  /**
+   * Object containing client_email and private_key properties
+   */
+  credentials?: CredentialBody;
+
+  /**
+   * Required scopes for the desired API request
+   */
+  scopes?: string|string[];
+
+  /**
+   * Your project ID.
+   */
+  projectId?: string;
+}
+
+export const CLOUD_SDK_CLIENT_ID &#x3D;
+    &#x27;764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com&#x27;;
+
+export class GoogleAuth {
+  transporter?: Transporter;
+
+  /**
+   * Caches a value indicating whether the auth layer is running on Google
+   * Compute Engine.
+   * @private
+   */
+  private checkIsGCE?: boolean &#x3D; undefined;
+
+  // Note:  this properly is only public to satisify unit tests.
+  // https://github.com/Microsoft/TypeScript/issues/5228
+  get isGCE() {
+    return this.checkIsGCE;
+  }
+
+  private _getDefaultProjectIdPromise?: Promise&lt;string|null&gt;;
+  private _cachedProjectId?: string|null;
+
+  // To save the contents of the JSON credential file
+  jsonContent: JWTInput|null &#x3D; null;
+
+  cachedCredential: JWT|UserRefreshClient|Compute|null &#x3D; null;
+
+  private keyFilename?: string;
+  private scopes?: string|string[];
+
+  /**
+   * Export DefaultTransporter as a static property of the class.
+   */
+  static DefaultTransporter &#x3D; DefaultTransporter;
+
+  constructor(opts?: GoogleAuthOptions) {
+    opts &#x3D; opts || {};
+    this._cachedProjectId &#x3D; opts.projectId || null;
+    this.keyFilename &#x3D; opts.keyFilename || opts.keyFile;
+    this.scopes &#x3D; opts.scopes;
+    this.jsonContent &#x3D; opts.credentials || null;
+  }
+
+  /**
+   * THIS METHOD HAS BEEN DEPRECATED.
+   * It will be removed in 3.0.  Please use getProjectId instead.
+   */
+  getDefaultProjectId(): Promise&lt;string&gt;;
+  getDefaultProjectId(callback: ProjectIdCallback): void;
+  getDefaultProjectId(callback?: ProjectIdCallback): Promise&lt;string|null&gt;|void {
+    messages.warn(messages.DEFAULT_PROJECT_ID_DEPRECATED);
+    if (callback) {
+      this.getProjectIdAsync().then(r &#x3D;&gt; callback(null, r), callback);
+    } else {
+      return this.getProjectIdAsync();
+    }
+  }
+
+  /**
+   * Obtains the default project ID for the application.
+   * @param callback Optional callback
+   * @returns Promise that resolves with project Id (if used without callback)
+   */
+  getProjectId(): Promise&lt;string&gt;;
+  getProjectId(callback: ProjectIdCallback): void;
+  getProjectId(callback?: ProjectIdCallback): Promise&lt;string|null&gt;|void {
+    if (callback) {
+      this.getProjectIdAsync().then(r &#x3D;&gt; callback(null, r), callback);
+    } else {
+      return this.getProjectIdAsync();
+    }
+  }
+
+  private getProjectIdAsync(): Promise&lt;string|null&gt; {
+    if (this._cachedProjectId) {
+      return Promise.resolve(this._cachedProjectId);
+    }
+
+    // In implicit case, supports three environments. In order of precedence,
+    // the implicit environments are:
+    // - GCLOUD_PROJECT or GOOGLE_CLOUD_PROJECT environment variable
+    // - GOOGLE_APPLICATION_CREDENTIALS JSON file
+    // - Cloud SDK: &#x60;gcloud config config-helper --format json&#x60;
+    // - GCE project ID from metadata server)
+    if (!this._getDefaultProjectIdPromise) {
+      this._getDefaultProjectIdPromise &#x3D;
+          new Promise(async (resolve, reject) &#x3D;&gt; {
+            try {
+              const projectId &#x3D; this.getProductionProjectId() ||
+                  await this.getFileProjectId() ||
+                  await this.getDefaultServiceProjectId() ||
+                  await this.getGCEProjectId();
+              this._cachedProjectId &#x3D; projectId;
+              resolve(projectId);
+            } catch (e) {
+              reject(e);
+            }
+          });
+    }
+    return this._getDefaultProjectIdPromise;
+  }
+
+  /**
+   * Obtains the default service-level credentials for the application.
+   * @param callback Optional callback.
+   * @returns Promise that resolves with the ADCResponse (if no callback was
+   * passed).
+   */
+  getApplicationDefault(): Promise&lt;ADCResponse&gt;;
+  getApplicationDefault(callback: ADCCallback): void;
+  getApplicationDefault(options: RefreshOptions): Promise&lt;ADCResponse&gt;;
+  getApplicationDefault(options: RefreshOptions, callback: ADCCallback): void;
+  getApplicationDefault(
+      optionsOrCallback: ADCCallback|RefreshOptions &#x3D; {},
+      callback?: ADCCallback): void|Promise&lt;ADCResponse&gt; {
+    let options: RefreshOptions|undefined;
+    if (typeof optionsOrCallback &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+      callback &#x3D; optionsOrCallback;
+    } else {
+      options &#x3D; optionsOrCallback;
+    }
+    if (callback) {
+      this.getApplicationDefaultAsync(options).then(
+          r &#x3D;&gt; callback!(null, r.credential, r.projectId), callback);
+    } else {
+      return this.getApplicationDefaultAsync(options);
+    }
+  }
+
+  private async getApplicationDefaultAsync(options?: RefreshOptions):
+      Promise&lt;ADCResponse&gt; {
+    // If we&#x27;ve already got a cached credential, just return it.
+    if (this.cachedCredential) {
+      return {
+        credential: this.cachedCredential as JWT | UserRefreshClient,
+        projectId: await this.getProjectIdAsync()
+      };
+    }
+
+    let credential: JWT|UserRefreshClient|null;
+    let projectId: string|null;
+    // Check for the existence of a local environment variable pointing to the
+    // location of the credential file. This is typically used in local
+    // developer scenarios.
+    credential &#x3D;
+        await this._tryGetApplicationCredentialsFromEnvironmentVariable(
+            options);
+    if (credential) {
+      if (credential instanceof JWT) {
+        credential.scopes &#x3D; this.scopes;
+      }
+      this.cachedCredential &#x3D; credential;
+      projectId &#x3D; await this.getProjectId();
+      return {credential, projectId};
+    }
+
+    // Look in the well-known credential file location.
+    credential &#x3D;
+        await this._tryGetApplicationCredentialsFromWellKnownFile(options);
+    if (credential) {
+      if (credential instanceof JWT) {
+        credential.scopes &#x3D; this.scopes;
+      }
+      this.cachedCredential &#x3D; credential;
+      projectId &#x3D; await this.getProjectId();
+      return {credential, projectId};
+    }
+
+    // Determine if we&#x27;re running on GCE.
+    let isGCE;
+    try {
+      isGCE &#x3D; await this._checkIsGCE();
+    } catch (e) {
+      throw new Error(
+          &#x27;Unexpected error determining execution environment: &#x27; + e.message);
+    }
+
+    if (!isGCE) {
+      // We failed to find the default credentials. Bail out with an error.
+      throw new Error(
+          &#x27;Could not load the default credentials. Browse to https://cloud.google.com/docs/authentication/getting-started for more information.&#x27;);
+    }
+
+    // For GCE, just return a default ComputeClient. It will take care of
+    // the rest.
+    this.cachedCredential &#x3D; new Compute(options);
+    projectId &#x3D; await this.getProjectId();
+    return {projectId, credential: this.cachedCredential};
+  }
+
+  /**
+   * Determines whether the auth layer is running on Google Compute Engine.
+   * @returns A promise that resolves with the boolean.
+   * @api private
+   */
+  async _checkIsGCE() {
+    if (this.checkIsGCE &#x3D;&#x3D;&#x3D; undefined) {
+      this.checkIsGCE &#x3D; await gcpMetadata.isAvailable();
+    }
+    return this.checkIsGCE;
+  }
+
+  /**
+   * Attempts to load default credentials from the environment variable path..
+   * @returns Promise that resolves with the OAuth2Client or null.
+   * @api private
+   */
+  async _tryGetApplicationCredentialsFromEnvironmentVariable(
+      options?: RefreshOptions): Promise&lt;JWT|UserRefreshClient|null&gt; {
+    const credentialsPath &#x3D; process.env[&#x27;GOOGLE_APPLICATION_CREDENTIALS&#x27;];
+    if (!credentialsPath || credentialsPath.length &#x3D;&#x3D;&#x3D; 0) {
+      return null;
+    }
+    try {
+      return this._getApplicationCredentialsFromFilePath(
+          credentialsPath, options);
+    } catch (e) {
+      throw this.createError(
+          &#x27;Unable to read the credential file specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable.&#x27;,
+          e);
+    }
+  }
+
+  /**
+   * Attempts to load default credentials from a well-known file location
+   * @return Promise that resolves with the OAuth2Client or null.
+   * @api private
+   */
+  async _tryGetApplicationCredentialsFromWellKnownFile(
+      options?: RefreshOptions): Promise&lt;JWT|UserRefreshClient|null&gt; {
+    // First, figure out the location of the file, depending upon the OS type.
+    let location &#x3D; null;
+    if (this._isWindows()) {
+      // Windows
+      location &#x3D; process.env[&#x27;APPDATA&#x27;];
+    } else {
+      // Linux or Mac
+      const home &#x3D; process.env[&#x27;HOME&#x27;];
+      if (home) {
+        location &#x3D; this._pathJoin(home, &#x27;.config&#x27;);
+      }
+    }
+    // If we found the root path, expand it.
+    if (location) {
+      location &#x3D; this._pathJoin(location, &#x27;gcloud&#x27;);
+      location &#x3D;
+          this._pathJoin(location, &#x27;application_default_credentials.json&#x27;);
+      location &#x3D; this._mockWellKnownFilePath(location);
+      // Check whether the file exists.
+      if (!this._fileExists(location)) {
+        location &#x3D; null;
+      }
+    }
+    // The file does not exist.
+    if (!location) {
+      return null;
+    }
+    // The file seems to exist. Try to use it.
+    const client &#x3D;
+        await this._getApplicationCredentialsFromFilePath(location, options);
+    this.warnOnProblematicCredentials(client as JWT);
+    return client;
+  }
+
+  /**
+   * Attempts to load default credentials from a file at the given path..
+   * @param filePath The path to the file to read.
+   * @returns Promise that resolves with the OAuth2Client
+   * @api private
+   */
+  async _getApplicationCredentialsFromFilePath(
+      filePath: string,
+      options: RefreshOptions &#x3D; {}): Promise&lt;JWT|UserRefreshClient&gt; {
+    // Make sure the path looks like a string.
+    if (!filePath || filePath.length &#x3D;&#x3D;&#x3D; 0) {
+      throw new Error(&#x27;The file path is invalid.&#x27;);
+    }
+
+    // Make sure there is a file at the path. lstatSync will throw if there is
+    // nothing there.
+    try {
+      // Resolve path to actual file in case of symlink. Expect a thrown error
+      // if not resolvable.
+      filePath &#x3D; fs.realpathSync(filePath);
+
+      if (!fs.lstatSync(filePath).isFile()) {
+        throw new Error();
+      }
+    } catch (err) {
+      throw this.createError(
+          util.format(
+              &#x27;The file at %s does not exist, or it is not a file.&#x27;, filePath),
+          err);
+    }
+
+    // Now open a read stream on the file, and parse it.
+    try {
+      const readStream &#x3D; this._createReadStream(filePath);
+      return this.fromStream(readStream, options);
+    } catch (err) {
+      throw this.createError(
+          util.format(&#x27;Unable to read the file at %s.&#x27;, filePath), err);
+    }
+  }
+
+  /**
+   * Credentials from the Cloud SDK that are associated with Cloud SDK&#x27;s project
+   * are problematic because they may not have APIs enabled and have limited
+   * quota. If this is the case, warn about it.
+   */
+  protected warnOnProblematicCredentials(client: JWT) {
+    if (client.email &#x3D;&#x3D;&#x3D; CLOUD_SDK_CLIENT_ID) {
+      messages.warn(messages.PROBLEMATIC_CREDENTIALS_WARNING);
+    }
+  }
+
+  /**
+   * Create a credentials instance using the given input options.
+   * @param json The input object.
+   * @returns JWT or UserRefresh Client with data
+   */
+  fromJSON(json: JWTInput, options?: RefreshOptions): JWT|UserRefreshClient {
+    let client: UserRefreshClient|JWT;
+    if (!json) {
+      throw new Error(
+          &#x27;Must pass in a JSON object containing the Google auth settings.&#x27;);
+    }
+    this.jsonContent &#x3D; json;
+    options &#x3D; options || {};
+    if (json.type &#x3D;&#x3D;&#x3D; &#x27;authorized_user&#x27;) {
+      client &#x3D; new UserRefreshClient(options);
+    } else {
+      (options as JWTOptions).scopes &#x3D; this.scopes;
+      client &#x3D; new JWT(options);
+    }
+    client.fromJSON(json);
+    return client;
+  }
+
+  /**
+   * Create a credentials instance using the given input stream.
+   * @param inputStream The input stream.
+   * @param callback Optional callback.
+   */
+  fromStream(inputStream: stream.Readable): Promise&lt;JWT|UserRefreshClient&gt;;
+  fromStream(inputStream: stream.Readable, callback: CredentialCallback): void;
+  fromStream(inputStream: stream.Readable, options: RefreshOptions):
+      Promise&lt;JWT|UserRefreshClient&gt;;
+  fromStream(
+      inputStream: stream.Readable, options: RefreshOptions,
+      callback: CredentialCallback): void;
+  fromStream(
+      inputStream: stream.Readable,
+      optionsOrCallback: RefreshOptions|CredentialCallback &#x3D; {},
+      callback?: CredentialCallback): Promise&lt;JWT|UserRefreshClient&gt;|void {
+    let options: RefreshOptions &#x3D; {};
+    if (typeof optionsOrCallback &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+      callback &#x3D; optionsOrCallback;
+    } else {
+      options &#x3D; optionsOrCallback;
+    }
+    if (callback) {
+      this.fromStreamAsync(inputStream, options)
+          .then(r &#x3D;&gt; callback!(null, r), callback);
+    } else {
+      return this.fromStreamAsync(inputStream, options);
+    }
+  }
+
+  private fromStreamAsync(
+      inputStream: stream.Readable,
+      options?: RefreshOptions): Promise&lt;JWT|UserRefreshClient&gt; {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+      if (!inputStream) {
+        throw new Error(
+            &#x27;Must pass in a stream containing the Google auth settings.&#x27;);
+      }
+      let s &#x3D; &#x27;&#x27;;
+      inputStream.setEncoding(&#x27;utf8&#x27;)
+          .on(&#x27;error&#x27;, reject)
+          .on(&#x27;data&#x27;, (chunk) &#x3D;&gt; s +&#x3D; chunk)
+          .on(&#x27;end&#x27;, () &#x3D;&gt; {
+            try {
+              const data &#x3D; JSON.parse(s);
+              const r &#x3D; this.fromJSON(data, options);
+              return resolve(r);
+            } catch (err) {
+              return reject(err);
+            }
+          });
+    });
+  }
+
+  /**
+   * Create a credentials instance using the given API key string.
+   * @param apiKey The API key string
+   * @param options An optional options object.
+   * @returns A JWT loaded from the key
+   */
+  fromAPIKey(apiKey: string, options?: RefreshOptions): JWT {
+    options &#x3D; options || {};
+    const client &#x3D; new JWT(options);
+    client.fromAPIKey(apiKey);
+    return client;
+  }
+
+  /**
+   * Determines whether the current operating system is Windows.
+   * @api private
+   */
+  private _isWindows() {
+    const sys &#x3D; this._osPlatform();
+    if (sys &amp;&amp; sys.length &gt;&#x3D; 3) {
+      if (sys.substring(0, 3).toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;win&#x27;) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Creates a file stream. Allows mocking.
+   * @api private
+   */
+  _createReadStream(filePath: string) {
+    return fs.createReadStream(filePath);
+  }
+
+  /**
+   * Gets the current operating system platform. Allows mocking.
+   * @api private
+   */
+  _osPlatform() {
+    return os.platform();
+  }
+
+  /**
+   * Determines whether a file exists. Allows mocking.
+   * @api private
+   */
+  _fileExists(filePath: string) {
+    return fs.existsSync(filePath);
+  }
+
+  /**
+   * Joins two parts of a path. Allows mocking.
+   * @api private
+   */
+  _pathJoin(item1: string, item2: string) {
+    return path.join(item1, item2);
+  }
+
+  /**
+   * Allows mocking of the path to a well-known file.
+   * @api private
+   */
+  _mockWellKnownFilePath(filePath: string) {
+    return filePath;
+  }
+
+  // Creates an Error containing the given message, and includes the message
+  // from the optional err passed in.
+  private createError(message: string, err: Error) {
+    let s &#x3D; message || &#x27;&#x27;;
+    if (err) {
+      const errorMessage &#x3D; String(err);
+      if (errorMessage &amp;&amp; errorMessage.length &gt; 0) {
+        if (s.length &gt; 0) {
+          s +&#x3D; &#x27; &#x27;;
+        }
+        s +&#x3D; errorMessage;
+      }
+    }
+    return Error(s);
+  }
+
+  /**
+   * Run the Google Cloud SDK command that prints the default project ID
+   */
+  private async getDefaultServiceProjectId(): Promise&lt;string|null&gt; {
+    return new Promise&lt;string|null&gt;(resolve &#x3D;&gt; {
+      exec(
+          &#x27;gcloud config config-helper --format json&#x27;,
+          (err, stdout, stderr) &#x3D;&gt; {
+            if (!err &amp;&amp; stdout) {
+              try {
+                const projectId &#x3D;
+                    JSON.parse(stdout).configuration.properties.core.project;
+                resolve(projectId);
+                return;
+              } catch (e) {
+                // ignore errors
+              }
+            }
+            resolve(null);
+          });
+    });
+  }
+
+  /**
+   * Loads the project id from environment variables.
+   * @api private
+   */
+  private getProductionProjectId() {
+    return process.env[&#x27;GCLOUD_PROJECT&#x27;] || process.env[&#x27;GOOGLE_CLOUD_PROJECT&#x27;];
+  }
+
+  /**
+   * Loads the project id from the GOOGLE_APPLICATION_CREDENTIALS json file.
+   * @api private
+   */
+  private async getFileProjectId(): Promise&lt;string|undefined|null&gt; {
+    if (this.cachedCredential) {
+      // Try to read the project ID from the cached credentials file
+      return this.cachedCredential.projectId;
+    }
+
+    // Try to load a credentials file and read its project ID
+    const r &#x3D; await this._tryGetApplicationCredentialsFromEnvironmentVariable();
+    if (r) {
+      return r.projectId;
+    } else {
+      return null;
+    }
+  }
+
+  /**
+   * Gets the Compute Engine project ID if it can be inferred.
+   */
+  private async getGCEProjectId() {
+    try {
+      const r &#x3D; await gcpMetadata.project(&#x27;project-id&#x27;);
+      return r.data;
+    } catch (e) {
+      // Ignore any errors
+      return null;
+    }
+  }
+
+  /**
+   * The callback function handles a credential object that contains the
+   * client_email and private_key (if exists).
+   * getCredentials checks for these values from the user JSON at first.
+   * If it doesn&#x27;t exist, and the environment is on GCE, it gets the
+   * client_email from the cloud metadata server.
+   * @param callback Callback that handles the credential object that contains
+   * a client_email and optional private key, or the error.
+   * returned
+   */
+  getCredentials(): Promise&lt;CredentialBody&gt;;
+  getCredentials(
+      callback: (err: Error|null, credentials?: CredentialBody) &#x3D;&gt; void): void;
+  getCredentials(
+      callback?: (err: Error|null, credentials?: CredentialBody) &#x3D;&gt; void):
+      void|Promise&lt;CredentialBody&gt; {
+    if (callback) {
+      this.getCredentialsAsync().then(r &#x3D;&gt; callback(null, r), callback);
+    } else {
+      return this.getCredentialsAsync();
+    }
+  }
+
+  private async getCredentialsAsync(): Promise&lt;CredentialBody&gt; {
+    if (this.jsonContent) {
+      const credential: CredentialBody &#x3D; {
+        client_email: this.jsonContent.client_email,
+        private_key: this.jsonContent.private_key
+      };
+      return credential;
+    }
+
+    const isGCE &#x3D; await this._checkIsGCE();
+    if (!isGCE) {
+      throw new Error(&#x27;Unknown error.&#x27;);
+    }
+
+    // For GCE, return the service account details from the metadata server
+    // NOTE: The trailing &#x27;/&#x27; at the end of service-accounts/ is very important!
+    // The GCF metadata server doesn&#x27;t respect querystring params if this / is
+    // not included.
+    const {data} &#x3D; await gcpMetadata.instance(
+        {property: &#x27;service-accounts/&#x27;, params: {recursive: true}});
+
+    if (!data || !data.default || !data.default.email) {
+      throw new Error(&#x27;Failure from metadata server.&#x27;);
+    }
+
+    return {client_email: data.default.email};
+  }
+
+  /**
+   * Automatically obtain a client based on the provided configuration.  If no
+   * options were passed, use Application Default Credentials.
+   */
+  async getClient(options?: GoogleAuthOptions) {
+    if (options) {
+      this.keyFilename &#x3D;
+          options.keyFilename || options.keyFile || this.keyFilename;
+      this.scopes &#x3D; options.scopes || this.scopes;
+      this.jsonContent &#x3D; options.credentials || this.jsonContent;
+    }
+    if (!this.cachedCredential) {
+      if (this.jsonContent) {
+        this.cachedCredential &#x3D; await this.fromJSON(this.jsonContent);
+      } else if (this.keyFilename) {
+        const filePath &#x3D; path.resolve(this.keyFilename);
+        const stream &#x3D; fs.createReadStream(filePath);
+        this.cachedCredential &#x3D; await this.fromStreamAsync(stream);
+      } else {
+        await this.getApplicationDefaultAsync();
+      }
+    }
+    return this.cachedCredential!;
+  }
+
+  /**
+   * Automatically obtain application default credentials, and return
+   * an access token for making requests.
+   */
+  async getAccessToken() {
+    const client &#x3D; await this.getClient();
+    return (await client.getAccessToken()).token;
+  }
+
+  /**
+   * Obtain the HTTP headers that will provide authorization for a given
+   * request.
+   */
+  async getRequestHeaders(url?: string) {
+    const client &#x3D; await this.getClient();
+    return client.getRequestHeaders(url);
+  }
+
+  /**
+   * Obtain credentials for a request, then attach the appropriate headers to
+   * the request options.
+   * @param opts Axios or Request options on which to attach the headers
+   */
+  async authorizeRequest(opts:
+                             {url?: string, uri?: string, headers?: Headers}) {
+    opts &#x3D; opts || {};
+    const url &#x3D; opts.url || opts.uri;
+    const client &#x3D; await this.getClient();
+    const headers &#x3D; await client.getRequestHeaders(url);
+    opts.headers &#x3D; Object.assign(opts.headers || {}, headers);
+    return opts;
+  }
+
+  /**
+   * Automatically obtain application default credentials, and make an
+   * HTTP request using the given options.
+   * @param opts Axios request options for the HTTP request.
+   */
+  // tslint:disable-next-line no-any
+  async request&lt;T &#x3D; any&gt;(opts: AxiosRequestConfig): Promise&lt;AxiosResponse&lt;T&gt;&gt; {
+    const client &#x3D; await this.getClient();
+    return client.request&lt;T&gt;(opts);
+  }
+
+  /**
+   * Determine the compute environment in which the code is running.
+   */
+  getEnv(): Promise&lt;GCPEnv&gt; {
+    return getEnv();
+  }
+
+  /**
+   * Sign the given data with the current private key, or go out
+   * to the IAM API to sign it.
+   * @param data The data to be signed.
+   */
+  async sign(data: string): Promise&lt;string&gt; {
+    const client &#x3D; await this.getClient();
+    if (client instanceof JWT &amp;&amp; client.key) {
+      const sign &#x3D; crypto.createSign(&#x27;RSA-SHA256&#x27;);
+      sign.update(data);
+      return sign.sign(client.key, &#x27;base64&#x27;);
+    }
+
+    const projectId &#x3D; await this.getProjectId();
+    if (!projectId) {
+      throw new Error(&#x27;Cannot sign data without a project ID.&#x27;);
+    }
+
+    const creds &#x3D; await this.getCredentials();
+    if (!creds.client_email) {
+      throw new Error(&#x27;Cannot sign data without &#x60;client_email&#x60;.&#x27;);
+    }
+
+    const id &#x3D; &#x60;projects/${projectId}/serviceAccounts/${creds.client_email}&#x60;;
+    const res &#x3D; await this.request&lt;SignBlobResponse&gt;({
+      method: &#x27;POST&#x27;,
+      url: &#x60;https://iam.googleapis.com/v1/${id}:signBlob&#x60;,
+      data: {bytesToSign: Buffer.from(data).toString(&#x27;base64&#x27;)}
+    });
+    return res.data.signature;
+  }
+}
+
+export interface SignBlobResponse {
+  signature: string;
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'ADCCallback.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

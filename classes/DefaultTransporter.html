@@ -1,0 +1,725 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>google-auth-library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">google-auth-library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>DefaultTransporter</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/transporters.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#USER_AGENT">USER_AGENT</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#configure">configure</a>
+                            </li>
+                            <li>
+                                <a href="#request">request</a>
+                            </li>
+                            <li>
+                                <a href="#request">request</a>
+                            </li>
+                            <li>
+                                <a href="#request">request</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="USER_AGENT"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                                <span class="modifier">Readonly</span>
+                            USER_AGENT
+                            </b>
+                            <a href="#USER_AGENT"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>USER_AGENT:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x60;${PRODUCT_NAME}/${pkg.version}&#x60;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/transporters.ts:57</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Default user agent.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="configure"></a>
+                        <span class="name">
+                            <b>
+                            configure
+                            </b>
+                            <a href="#configure"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>configure(opts: AxiosRequestConfig)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/transporters.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Configures request options before making a request.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>opts</td>
+                                                        <td>
+                                                                    <code>AxiosRequestConfig</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                        <td>
+                                                                <code><p>AxiosRequestConfig options.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>AxiosRequestConfig</code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>Configured options.</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="request"></a>
+                        <span class="name">
+                            <b>
+                            request
+                            </b>
+                            <a href="#request"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>request(opts: AxiosRequestConfig)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/transporters.ts:83</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Makes a request using Axios with given options.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>opts</td>
+                                                        <td>
+                                                                    <code>AxiosRequestConfig</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>AxiosRequestConfig options.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>AxiosPromise&lt;T&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>AxiosPromise, assuming no callback is passed.</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="request"></a>
+                        <span class="name">
+                            <b>
+                            request
+                            </b>
+                            <a href="#request"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>request(opts: AxiosRequestConfig, callback?: <a href="../interfaces/BodyResponseCallback.html">BodyResponseCallback<T></a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/transporters.ts:84</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>opts</td>
+                                                        <td>
+                                                                    <code>AxiosRequestConfig</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>callback</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/BodyResponseCallback.html" target="_self" >BodyResponseCallback&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="request"></a>
+                        <span class="name">
+                            <b>
+                            request
+                            </b>
+                            <a href="#request"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>request(opts: AxiosRequestConfig, callback?: <a href="../interfaces/BodyResponseCallback.html">BodyResponseCallback<T></a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/transporters.ts:86</a></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                <b>Type parameters :</b>
+                                <ul class="type-parameters">
+                                        <li>T</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>opts</td>
+                                                        <td>
+                                                                    <code>AxiosRequestConfig</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>callback</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/BodyResponseCallback.html" target="_self" >BodyResponseCallback&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>AxiosPromise | void</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import axios, {AxiosError, AxiosPromise, AxiosRequestConfig, AxiosResponse} from &#x27;axios&#x27;;
+import {validate} from &#x27;./options&#x27;;
+
+// tslint:disable-next-line variable-name
+const HttpsProxyAgent &#x3D; require(&#x27;https-proxy-agent&#x27;);
+
+// tslint:disable-next-line no-var-requires
+const pkg &#x3D; require(&#x27;../../package.json&#x27;);
+const PRODUCT_NAME &#x3D; &#x27;google-api-nodejs-client&#x27;;
+
+export interface Transporter {
+  request&lt;T&gt;(opts: AxiosRequestConfig): AxiosPromise&lt;T&gt;;
+  request&lt;T&gt;(opts: AxiosRequestConfig, callback?: BodyResponseCallback&lt;T&gt;):
+      void;
+  request&lt;T&gt;(opts: AxiosRequestConfig, callback?: BodyResponseCallback&lt;T&gt;):
+      AxiosPromise|void;
+}
+
+export interface BodyResponseCallback&lt;T&gt; {
+  // The &#x60;body&#x60; object is a truly dynamic type.  It must be &#x60;any&#x60;.
+  (err: Error|null, res?: AxiosResponse&lt;T&gt;|null): void;
+}
+
+export interface RequestError extends AxiosError {
+  errors: Error[];
+}
+
+/**
+ * Axios will use XHR if it is available. In the case of Electron,
+ * since XHR is there it will try to use that. This leads to OPTIONS
+ * preflight requests which googleapis DOES NOT like. This line of
+ * code pins the adapter to ensure it uses node.
+ * https://github.com/google/google-api-nodejs-client/issues/1083
+ */
+axios.defaults.adapter &#x3D; require(&#x27;axios/lib/adapters/http&#x27;);
+
+export class DefaultTransporter {
+  /**
+   * Default user agent.
+   */
+  static readonly USER_AGENT &#x3D; &#x60;${PRODUCT_NAME}/${pkg.version}&#x60;;
+
+  /**
+   * Configures request options before making a request.
+   * @param opts AxiosRequestConfig options.
+   * @return Configured options.
+   */
+  configure(opts: AxiosRequestConfig &#x3D; {}): AxiosRequestConfig {
+    // set transporter user agent
+    opts.headers &#x3D; opts.headers || {};
+    const uaValue: string &#x3D; opts.headers[&#x27;User-Agent&#x27;];
+    if (!uaValue) {
+      opts.headers[&#x27;User-Agent&#x27;] &#x3D; DefaultTransporter.USER_AGENT;
+    } else if (!uaValue.includes(&#x60;${PRODUCT_NAME}/&#x60;)) {
+      opts.headers[&#x27;User-Agent&#x27;] &#x3D;
+          &#x60;${uaValue} ${DefaultTransporter.USER_AGENT}&#x60;;
+    }
+    return opts;
+  }
+
+  /**
+   * Makes a request using Axios with given options.
+   * @param opts AxiosRequestConfig options.
+   * @param callback optional callback that contains AxiosResponse object.
+   * @return AxiosPromise, assuming no callback is passed.
+   */
+  request&lt;T&gt;(opts: AxiosRequestConfig): AxiosPromise&lt;T&gt;;
+  request&lt;T&gt;(opts: AxiosRequestConfig, callback?: BodyResponseCallback&lt;T&gt;):
+      void;
+  request&lt;T&gt;(opts: AxiosRequestConfig, callback?: BodyResponseCallback&lt;T&gt;):
+      AxiosPromise|void {
+    // ensure the user isn&#x27;t passing in request-style options
+    opts &#x3D; this.configure(opts);
+    try {
+      validate(opts);
+    } catch (e) {
+      if (callback) {
+        return callback(e);
+      } else {
+        throw e;
+      }
+    }
+
+    // If the user configured an &#x60;HTTPS_PROXY&#x60; environment variable, create
+    // a custom agent to proxy the request.
+    const proxy &#x3D; process.env.HTTPS_PROXY || process.env.https_proxy;
+    if (proxy) {
+      opts.httpsAgent &#x3D; new HttpsProxyAgent(proxy);
+      opts.proxy &#x3D; false;
+    }
+
+    if (callback) {
+      axios(opts).then(
+          r &#x3D;&gt; {
+            callback(null, r);
+          },
+          e &#x3D;&gt; {
+            callback(this.processError(e));
+          });
+    } else {
+      return axios(opts).catch(e &#x3D;&gt; {
+        throw this.processError(e);
+      });
+    }
+  }
+
+  /**
+   * Changes the error to include details from the body.
+   */
+  private processError(e: AxiosError): RequestError {
+    const res &#x3D; e.response;
+    const err &#x3D; e as RequestError;
+    const body &#x3D; res ? res.data : null;
+    if (res &amp;&amp; body &amp;&amp; body.error &amp;&amp; res.status !&#x3D;&#x3D; 200) {
+      if (typeof body.error &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        err.message &#x3D; body.error;
+        err.code &#x3D; res.status.toString();
+      } else if (Array.isArray(body.error.errors)) {
+        err.message &#x3D;
+            body.error.errors.map((err2: Error) &#x3D;&gt; err2.message).join(&#x27;\n&#x27;);
+        err.code &#x3D; body.error.code;
+        err.errors &#x3D; body.error.errors;
+      } else {
+        err.message &#x3D; body.error.message;
+        err.code &#x3D; body.error.code || res.status;
+      }
+    } else if (res &amp;&amp; res.status &gt;&#x3D; 400) {
+      // Consider all 4xx and 5xx responses errors.
+      err.message &#x3D; body;
+      err.code &#x3D; res.status.toString();
+    }
+    return err;
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'DefaultTransporter.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

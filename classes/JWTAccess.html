@@ -1,0 +1,1178 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>google-auth-library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">google-auth-library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>JWTAccess</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/auth/jwtaccess.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#email">email</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#key">key</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#keyId">keyId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#projectId">projectId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createScopedRequired">createScopedRequired</a>
+                            </li>
+                            <li>
+                                <a href="#fromJSON">fromJSON</a>
+                            </li>
+                            <li>
+                                <a href="#fromStream">fromStream</a>
+                            </li>
+                            <li>
+                                <a href="#fromStream">fromStream</a>
+                            </li>
+                            <li>
+                                <a href="#fromStream">fromStream</a>
+                            </li>
+                            <li>
+                                <a href="#getRequestHeaders">getRequestHeaders</a>
+                            </li>
+                            <li>
+                                <a href="#getRequestMetadata">getRequestMetadata</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(email?: string | null, key?: string | null, keyId?: string | null)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/auth/jwtaccess.ts:41</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>JWTAccess service account credentials.</p>
+<p>Create a new access token by using the credential to create a new JWT token
+that&#39;s recognized as the access token.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>email</td>
+                                                  
+                                                        <td>
+                                                                    <code>string | null</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the service account email address.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>key</td>
+                                                  
+                                                        <td>
+                                                                    <code>string | null</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the private key that will be used to sign the token.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>keyId</td>
+                                                  
+                                                        <td>
+                                                                    <code>string | null</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>the ID of the private key used to sign the token.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="email"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Optional</span>
+                            email
+                            </b>
+                            <a href="#email"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>email:     <code>string | null</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string | null</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/auth/jwtaccess.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="key"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Optional</span>
+                            key
+                            </b>
+                            <a href="#key"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>key:     <code>string | null</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string | null</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/auth/jwtaccess.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="keyId"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Optional</span>
+                            keyId
+                            </b>
+                            <a href="#keyId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>keyId:     <code>string | null</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string | null</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/auth/jwtaccess.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="projectId"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Optional</span>
+                            projectId
+                            </b>
+                            <a href="#projectId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>projectId:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/auth/jwtaccess.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createScopedRequired"></a>
+                        <span class="name">
+                            <b>
+                            createScopedRequired
+                            </b>
+                            <a href="#createScopedRequired"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>createScopedRequired()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/auth/jwtaccess.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Indicates whether the credential requires scopes to be created by calling
+createdScoped before use.</p>
+</div>
+
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>always false</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fromJSON"></a>
+                        <span class="name">
+                            <b>
+                            fromJSON
+                            </b>
+                            <a href="#fromJSON"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>fromJSON(json: <a href="../interfaces/JWTInput.html">JWTInput</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/auth/jwtaccess.ts:134</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Create a JWTAccess credentials instance using the given input options.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>json</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/JWTInput.html" target="_self" >JWTInput</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The input object.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fromStream"></a>
+                        <span class="name">
+                            <b>
+                            fromStream
+                            </b>
+                            <a href="#fromStream"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>fromStream(inputStream: stream.Readable)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">src/auth/jwtaccess.ts:159</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Create a JWTAccess credentials instance using the given input stream.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>inputStream</td>
+                                                        <td>
+                                                                    <code>stream.Readable</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The input stream.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fromStream"></a>
+                        <span class="name">
+                            <b>
+                            fromStream
+                            </b>
+                            <a href="#fromStream"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>fromStream(inputStream: stream.Readable, callback: (err: Error) => void)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/auth/jwtaccess.ts:160</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>inputStream</td>
+                                                        <td>
+                                                                    <code>stream.Readable</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>callback</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fromStream"></a>
+                        <span class="name">
+                            <b>
+                            fromStream
+                            </b>
+                            <a href="#fromStream"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>fromStream(inputStream: stream.Readable, callback?: (err?: Error) => void)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/auth/jwtaccess.ts:162</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>inputStream</td>
+                                                        <td>
+                                                                    <code>stream.Readable</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>callback</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>void | Promise</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRequestHeaders"></a>
+                        <span class="name">
+                            <b>
+                            getRequestHeaders
+                            </b>
+                            <a href="#getRequestHeaders"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRequestHeaders(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, additionalClaims?: <a href="../undefineds/Claims.html">Claims</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/auth/jwtaccess.ts:94</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get a non-expired access token, after refreshing if necessary.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>The URI being authorized.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>additionalClaims</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#Claims" target="_self" >Claims</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>An object with a set of additional claims to
+include in the payload.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../miscellaneous/typealiases.html#Headers" target="_self" >Headers</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>An object that includes the authorization header.</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getRequestMetadata"></a>
+                        <span class="name">
+                            <b>
+                            getRequestMetadata
+                            </b>
+                            <a href="#getRequestMetadata"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getRequestMetadata(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, additionalClaims?: <a href="../undefineds/Claims.html">Claims</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/auth/jwtaccess.ts:80</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Get a non-expired access token, after refreshing if necessary.</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>additionalClaims</td>
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/typealiases.html#Claims" target="_self" >Claims</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>An object with a set of additional claims to
+include in the payload.</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/RequestMetadataResponse.html" target="_self" >RequestMetadataResponse</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    <p>An object that includes the authorization header.</p>
+
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as jws from &#x27;jws&#x27;;
+import * as LRU from &#x27;lru-cache&#x27;;
+import * as stream from &#x27;stream&#x27;;
+
+import * as messages from &#x27;../messages&#x27;;
+
+import {JWTInput} from &#x27;./credentials&#x27;;
+import {Headers, RequestMetadataResponse} from &#x27;./oauth2client&#x27;;
+
+const DEFAULT_HEADER: jws.Header &#x3D; {
+  alg: &#x27;RS256&#x27;,
+  typ: &#x27;JWT&#x27;
+};
+
+export type Claims &#x3D; {
+  [index: string]: string
+};
+
+export class JWTAccess {
+  email?: string|null;
+  key?: string|null;
+  keyId?: string|null;
+  projectId?: string;
+
+  private cache &#x3D; new LRU&lt;string, Headers&gt;({max: 500, maxAge: 60 * 60 * 1000});
+
+  /**
+   * JWTAccess service account credentials.
+   *
+   * Create a new access token by using the credential to create a new JWT token
+   * that&#x27;s recognized as the access token.
+   *
+   * @param email the service account email address.
+   * @param key the private key that will be used to sign the token.
+   * @param keyId the ID of the private key used to sign the token.
+   */
+  constructor(email?: string|null, key?: string|null, keyId?: string|null) {
+    this.email &#x3D; email;
+    this.key &#x3D; key;
+    this.keyId &#x3D; keyId;
+  }
+
+  /**
+   * Indicates whether the credential requires scopes to be created by calling
+   * createdScoped before use.
+   * @deprecated
+   * @return always false
+   */
+  createScopedRequired(): boolean {
+    // JWT Header authentication does not use scopes.
+    messages.warn(messages.JWT_ACCESS_CREATE_SCOPED_DEPRECATED);
+    return false;
+  }
+
+  /**
+   * Get a non-expired access token, after refreshing if necessary.
+   *
+   * @param authURI The URI being authorized.
+   * @param additionalClaims An object with a set of additional claims to
+   * include in the payload.
+   * @deprecated Please use &#x60;getRequestHeaders&#x60; instead.
+   * @returns An object that includes the authorization header.
+   */
+  getRequestMetadata(url: string, additionalClaims?: Claims):
+      RequestMetadataResponse {
+    messages.warn(messages.JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED);
+    return {headers: this.getRequestHeaders(url, additionalClaims)};
+  }
+
+  /**
+   * Get a non-expired access token, after refreshing if necessary.
+   *
+   * @param url The URI being authorized.
+   * @param additionalClaims An object with a set of additional claims to
+   * include in the payload.
+   * @returns An object that includes the authorization header.
+   */
+  getRequestHeaders(url: string, additionalClaims?: Claims): Headers {
+    const cachedToken &#x3D; this.cache.get(url);
+    if (cachedToken) {
+      return cachedToken;
+    }
+    const iat &#x3D; Math.floor(new Date().getTime() / 1000);
+    const exp &#x3D; iat + 3600;  // 3600 seconds &#x3D; 1 hour
+
+    // The payload used for signed JWT headers has:
+    // iss &#x3D;&#x3D; sub &#x3D;&#x3D; &lt;client email&gt;
+    // aud &#x3D;&#x3D; &lt;the authorization uri&gt;
+    const defaultClaims &#x3D;
+        {iss: this.email, sub: this.email, aud: url, exp, iat};
+
+    // if additionalClaims are provided, ensure they do not collide with
+    // other required claims.
+    if (additionalClaims) {
+      for (const claim in defaultClaims) {
+        if (additionalClaims[claim]) {
+          throw new Error(&#x60;The &#x27;${
+              claim}&#x27; property is not allowed when passing additionalClaims. This claim is included in the JWT by default.&#x60;);
+        }
+      }
+    }
+
+    const header &#x3D;
+        this.keyId ? {...DEFAULT_HEADER, kid: this.keyId} : DEFAULT_HEADER;
+    const payload &#x3D; Object.assign(defaultClaims, additionalClaims);
+
+    // Sign the jwt and add it to the cache
+    const signedJWT &#x3D; jws.sign({header, payload, secret: this.key});
+    const headers &#x3D; {Authorization: &#x60;Bearer ${signedJWT}&#x60;};
+    this.cache.set(url, headers);
+    return headers;
+  }
+
+  /**
+   * Create a JWTAccess credentials instance using the given input options.
+   * @param json The input object.
+   */
+  fromJSON(json: JWTInput): void {
+    if (!json) {
+      throw new Error(
+          &#x27;Must pass in a JSON object containing the service account auth settings.&#x27;);
+    }
+    if (!json.client_email) {
+      throw new Error(
+          &#x27;The incoming JSON object does not contain a client_email field&#x27;);
+    }
+    if (!json.private_key) {
+      throw new Error(
+          &#x27;The incoming JSON object does not contain a private_key field&#x27;);
+    }
+    // Extract the relevant information from the json key file.
+    this.email &#x3D; json.client_email;
+    this.key &#x3D; json.private_key;
+    this.keyId &#x3D; json.private_key_id;
+    this.projectId &#x3D; json.project_id;
+  }
+
+  /**
+   * Create a JWTAccess credentials instance using the given input stream.
+   * @param inputStream The input stream.
+   * @param callback Optional callback.
+   */
+  fromStream(inputStream: stream.Readable): Promise&lt;void&gt;;
+  fromStream(inputStream: stream.Readable, callback: (err?: Error) &#x3D;&gt; void):
+      void;
+  fromStream(inputStream: stream.Readable, callback?: (err?: Error) &#x3D;&gt; void):
+      void|Promise&lt;void&gt; {
+    if (callback) {
+      this.fromStreamAsync(inputStream).then(r &#x3D;&gt; callback(), callback);
+    } else {
+      return this.fromStreamAsync(inputStream);
+    }
+  }
+
+  private fromStreamAsync(inputStream: stream.Readable): Promise&lt;void&gt; {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+      if (!inputStream) {
+        reject(new Error(
+            &#x27;Must pass in a stream containing the service account auth settings.&#x27;));
+      }
+      let s &#x3D; &#x27;&#x27;;
+      inputStream.setEncoding(&#x27;utf8&#x27;)
+          .on(&#x27;data&#x27;, (chunk) &#x3D;&gt; s +&#x3D; chunk)
+          .on(&#x27;error&#x27;, reject)
+          .on(&#x27;end&#x27;, () &#x3D;&gt; {
+            try {
+              const data &#x3D; JSON.parse(s);
+              this.fromJSON(data);
+              resolve();
+            } catch (err) {
+              reject(err);
+            }
+          });
+    });
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'JWTAccess.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

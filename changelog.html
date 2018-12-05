@@ -1,0 +1,233 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>google-auth-library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">google-auth-library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="changelog">Changelog</h1>
+<p><a href="https://www.npmjs.com/package/google-auth-library-nodejs?activeTab=versions">npm history</a></p>
+<h2 id="v2-0-1">v2.0.1</h2>
+<h3 id="implementation-changes">Implementation Changes</h3>
+<ul>
+<li>fix: verifyIdToken will never return null (<a href="https://github.com/google/google-auth-library-nodejs/pull/488">#488</a>)</li>
+<li>Update the url to application default credentials (<a href="https://github.com/google/google-auth-library-nodejs/pull/470">#470</a>)</li>
+<li>Update omitted parameter &#39;hd&#39; (<a href="https://github.com/google/google-auth-library-nodejs/pull/467">#467</a>)</li>
+</ul>
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li>chore(deps): update dependency nock to v10 (<a href="https://github.com/google/google-auth-library-nodejs/pull/501">#501</a>)</li>
+<li>chore(deps): update dependency sinon to v7 (<a href="https://github.com/google/google-auth-library-nodejs/pull/502">#502</a>)</li>
+<li>chore(deps): update dependency typescript to v3.1.3 (<a href="https://github.com/google/google-auth-library-nodejs/pull/503">#503</a>)</li>
+<li>chore(deps): update dependency gh-pages to v2 (<a href="https://github.com/google/google-auth-library-nodejs/pull/499">#499</a>)</li>
+<li>chore(deps): update dependency typedoc to ^0.13.0 (<a href="https://github.com/google/google-auth-library-nodejs/pull/497">#497</a>)</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>docs: Remove code format from Application Default Credentials (<a href="https://github.com/google/google-auth-library-nodejs/pull/483">#483</a>)</li>
+<li>docs: replace google/ with googleapis/ in URIs (<a href="https://github.com/google/google-auth-library-nodejs/pull/472">#472</a>)</li>
+<li>Fix typo in readme (<a href="https://github.com/google/google-auth-library-nodejs/pull/469">#469</a>)</li>
+<li>Update samples and docs for 2.0 (<a href="https://github.com/google/google-auth-library-nodejs/pull/459">#459</a>)</li>
+</ul>
+<h3 id="internal-testing-changes">Internal / Testing Changes</h3>
+<ul>
+<li>chore: update issue templates (<a href="https://github.com/google/google-auth-library-nodejs/pull/509">#509</a>)</li>
+<li>chore: remove old issue template (<a href="https://github.com/google/google-auth-library-nodejs/pull/507">#507</a>)</li>
+<li>build: run tests on node11 (<a href="https://github.com/google/google-auth-library-nodejs/pull/506">#506</a>)</li>
+<li>chore(build): drop hard rejection and update gts in the kitchen test (<a href="https://github.com/google/google-auth-library-nodejs/pull/504">#504</a>)</li>
+<li>chores(build): do not collect sponge.xml from windows builds (<a href="https://github.com/google/google-auth-library-nodejs/pull/500">#500</a>)</li>
+<li>chores(build): run codecov on continuous builds (<a href="https://github.com/google/google-auth-library-nodejs/pull/495">#495</a>)</li>
+<li>chore: update new issue template (<a href="https://github.com/google/google-auth-library-nodejs/pull/494">#494</a>)</li>
+<li>build: fix codecov uploading on Kokoro (<a href="https://github.com/google/google-auth-library-nodejs/pull/490">#490</a>)</li>
+<li>test: move kitchen sink tests to system-test (<a href="https://github.com/google/google-auth-library-nodejs/pull/489">#489</a>)</li>
+<li>Update kokoro config (<a href="https://github.com/google/google-auth-library-nodejs/pull/482">#482</a>)</li>
+<li>fix: export additional typescript types (<a href="https://github.com/google/google-auth-library-nodejs/pull/479">#479</a>)</li>
+<li>Don&#39;t publish sourcemaps (<a href="https://github.com/google/google-auth-library-nodejs/pull/478">#478</a>)</li>
+<li>test: remove appveyor config (<a href="https://github.com/google/google-auth-library-nodejs/pull/477">#477</a>)</li>
+<li>Enable prefer-const in the eslint config (<a href="https://github.com/google/google-auth-library-nodejs/pull/473">#473</a>)</li>
+<li>Enable no-var in eslint (<a href="https://github.com/google/google-auth-library-nodejs/pull/471">#471</a>)</li>
+<li>Update CI config (<a href="https://github.com/google/google-auth-library-nodejs/pull/468">#468</a>)</li>
+<li>Retry npm install in CI (<a href="https://github.com/google/google-auth-library-nodejs/pull/465">#465</a>)</li>
+<li>Update Kokoro config (<a href="https://github.com/google/google-auth-library-nodejs/pull/462">#462</a>)</li>
+</ul>
+<h2 id="v2-0-0">v2.0.0</h2>
+<p>Well hello 2.0 🎉  <strong>This release has multiple breaking changes</strong>.   It also has a lot of bug fixes.</p>
+<h3 id="breaking-changes">Breaking Changes</h3>
+<h4 id="support-for-node-js-4-x-and-9-x-has-been-dropped">Support for node.js 4.x and 9.x has been dropped</h4>
+<p>These versions of node.js are no longer supported.</p>
+<h4 id="the-getrequestmetadata-method-has-been-deprecated">The <code>getRequestMetadata</code> method has been deprecated</h4>
+<p>The <code>getRequestMetadata</code> method has been deprecated on the <code>IAM</code>, <code>OAuth2</code>, <code>JWT</code>, and <code>JWTAccess</code> classes.  The <code>getRequestHeaders</code> method should be used instead.  The methods have a subtle difference:  the <code>getRequestMetadata</code> method returns an object with a headers property, which contains the authorization header.  The <code>getRequestHeaders</code> method simply returns the headers.</p>
+<h5 id="old-code">Old code</h5>
+<div><pre class="line-numbers"><code class="language-js">const client = await auth.getClient();
+const res = await client.getRequestMetadata();
+const headers = res.headers;</code></pre></div><h5 id="new-code">New code</h5>
+<div><pre class="line-numbers"><code class="language-js">const client = await auth.getClient();
+const headers = await client.getRequestHeaders();</code></pre></div><h4 id="the-createscopedrequired-method-has-been-deprecated">The <code>createScopedRequired</code> method has been deprecated</h4>
+<p>The <code>createScopedRequired</code> method has been deprecated on multiple classes.  The <code>createScopedRequired</code> and <code>createScoped</code> methods on the <code>JWT</code> class were largely in place to help inform clients when scopes were required in an application default credential scenario.  Instead of checking if scopes are required after creating the client, instead scopes should just be passed either into the <code>GoogleAuth.getClient</code> method, or directly into the <code>JWT</code> constructor.</p>
+<h5 id="old-code">Old code</h5>
+<div><pre class="line-numbers"><code class="language-js">auth.getApplicationDefault(function(err, authClient) {
+   if (err) {
+     return callback(err);
+   }
+  if (authClient.createScopedRequired &amp;&amp; authClient.createScopedRequired()) {
+    authClient = authClient.createScoped([
+      &#39;https://www.googleapis.com/auth/cloud-platform&#39;
+    ]);
+  }
+  callback(null, authClient);
+});</code></pre></div><h5 id="new-code">New code</h5>
+<div><pre class="line-numbers"><code class="language-js">const client = await auth.getClient({
+  scopes: [&#39;https://www.googleapis.com/auth/cloud-platform&#39;]
+});</code></pre></div><h4 id="the-refreshaccesstoken-method-has-been-deprecated">The <code>refreshAccessToken</code> method has been deprecated</h4>
+<p>The <code>OAuth2.refreshAccessToken</code> method has been deprecated.  The <code>getAccessToken</code>, <code>getRequestMetadata</code>, and <code>request</code> methods will all refresh the token if needed automatically.   There is no need to ever manually refresh the token.</p>
+<p>As always, if you run into any problems... please let us know!</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Set private_key_id in JWT access token header like other google auth libraries. (#450)</li>
+</ul>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li>fix: support HTTPS proxies (#405)</li>
+<li>fix: export missing interfaces (#437)</li>
+<li>fix: Use new auth URIs (#434)</li>
+<li>docs: Fix broken link (#423)</li>
+<li>fix: surface file read streams (#413)</li>
+<li>fix: prevent unhandled rejections by avoid .catch (#404)</li>
+<li>fix: use gcp-metadata for compute credentials (#409)</li>
+<li>Add Code of Conduct</li>
+<li>fix: Warn when using user credentials from the Cloud SDK (#399)</li>
+<li>fix: use <code>Buffer.from</code> instead of <code>new Buffer</code> (#400)</li>
+<li>fix: Fix link format in README.md (#385)</li>
+</ul>
+<h3 id="breaking-changes">Breaking changes</h3>
+<ul>
+<li>chore: deprecate getRequestMetadata (#414)</li>
+<li>fix: deprecate the <code>createScopedRequired</code> methods (#410)</li>
+<li>fix: drop support for node.js 4.x and 9.x (#417)</li>
+<li>fix: deprecate the <code>refreshAccessToken</code> methods (#411)</li>
+<li>fix: deprecate the <code>getDefaultProjectId</code> method (#402)</li>
+<li>fix: drop support for node.js 4 (#401)</li>
+</ul>
+<h3 id="build-test-changes">Build / Test changes</h3>
+<ul>
+<li>Run synth to make build tools consistent (#455)</li>
+<li>Add a package.json for samples and cleanup README (#454)</li>
+<li>chore(deps): update dependency typedoc to ^0.12.0 (#453)</li>
+<li>chore: move examples =&gt; samples + synth (#448)</li>
+<li>chore(deps): update dependency nyc to v13 (#452)</li>
+<li>chore(deps): update dependency pify to v4 (#447)</li>
+<li>chore(deps): update dependency assert-rejects to v1 (#446)</li>
+<li>chore: ignore package-lock.json (#445)</li>
+<li>chore: update renovate config (#442)</li>
+<li>chore(deps): lock file maintenance (#443)</li>
+<li>chore: remove greenkeeper badge (#440)</li>
+<li>test: throw on deprecation</li>
+<li>chore: add intelli-espower-loader for running tests (#430)</li>
+<li>chore(deps): update dependency typescript to v3 (#432)</li>
+<li>chore(deps): lock file maintenance (#431)</li>
+<li>test: use strictEqual in tests (#425)</li>
+<li>chore(deps): lock file maintenance (#428)</li>
+<li>chore: Configure Renovate (#424)</li>
+<li>chore: Update gts to the latest version 🚀 (#422)</li>
+<li>chore: update gcp-metadata for isAvailable fix (#420)</li>
+<li>refactor: use assert.reject in the tests (#415)</li>
+<li>refactor: cleanup types for certificates (#412)</li>
+<li>test: run tests with hard-rejection (#397)</li>
+<li>cleanup: straighten nested try-catch (#394)</li>
+<li>test: getDefaultProjectId should prefer config (#388)</li>
+<li>chore(package): Update gts to the latest version 🚀 (#387)</li>
+<li>chore(package): update sinon to version 6.0.0 (#386)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

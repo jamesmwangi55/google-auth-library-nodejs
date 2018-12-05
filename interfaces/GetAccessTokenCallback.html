@@ -1,0 +1,1254 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>google-auth-library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">google-auth-library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>GetAccessTokenCallback</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/auth/oauth2client.ts</code>
+        </p>
+
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                            <a href="#call-declaration-473fd37e2c5ac632282908d5ccdf83f2">Unamed property</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Signature :</i>
+                                            <a name="call-declaration-473fd37e2c5ac632282908d5ccdf83f2"></a>
+                                            <code>
+                                                <!--ts.SyntaxKind.CallSignature-->
+                                                    [err: AxiosError | null, token: string | null, res: AxiosResponse | null]
+                                            </code>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Returns : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {AxiosError, AxiosPromise, AxiosRequestConfig, AxiosResponse} from &#x27;axios&#x27;;
+import * as crypto from &#x27;crypto&#x27;;
+import * as querystring from &#x27;querystring&#x27;;
+import * as stream from &#x27;stream&#x27;;
+import * as messages from &#x27;../messages&#x27;;
+import {PemVerifier} from &#x27;./../pemverifier&#x27;;
+import {BodyResponseCallback} from &#x27;./../transporters&#x27;;
+import {AuthClient} from &#x27;./authclient&#x27;;
+import {CredentialRequest, Credentials} from &#x27;./credentials&#x27;;
+import {LoginTicket, TokenPayload} from &#x27;./loginticket&#x27;;
+
+export type Certificates &#x3D; {
+  [index: string]: string
+};
+
+export type Headers &#x3D; {
+  [index: string]: string
+};
+
+export enum CodeChallengeMethod {
+  Plain &#x3D; &#x27;plain&#x27;,
+  S256 &#x3D; &#x27;S256&#x27;
+}
+
+export interface GetTokenOptions {
+  code: string;
+  codeVerifier?: string;
+  /**
+   * The client ID for your application. The value passed into the constructor
+   * will be used if not provided. Must match any client_id option passed to
+   * a corresponding call to generateAuthUrl.
+   */
+  client_id?: string;
+  /**
+   * Determines where the API server redirects the user after the user
+   * completes the authorization flow. The value passed into the constructor
+   * will be used if not provided. Must match any redirect_uri option passed to
+   * a corresponding call to generateAuthUrl.
+   */
+  redirect_uri?: string;
+}
+
+export interface TokenInfo {
+  /**
+   * The application that is the intended user of the access token.
+   */
+  aud: string;
+
+  /**
+   * This value lets you correlate profile information from multiple Google
+   * APIs. It is only present in the response if you included the profile scope
+   * in your request in step 1. The field value is an immutable identifier for
+   * the logged-in user that can be used to create and manage user sessions in
+   * your application. The identifier is the same regardless of which client ID
+   * is used to retrieve it. This enables multiple applications in the same
+   * organization to correlate profile information.
+   */
+  user_id?: string;
+
+  /**
+   * An array of scopes that the user granted access to.
+   */
+  scopes: string[];
+
+  /**
+   * The datetime when the token becomes invalid.
+   */
+  expiry_date: number;
+
+  /**
+   * An identifier for the user, unique among all Google accounts and never
+   * reused. A Google account can have multiple emails at different points in
+   * time, but the sub value is never changed. Use sub within your application
+   * as the unique-identifier key for the user.
+   */
+  sub?: string;
+
+  /**
+   * The client_id of the authorized presenter. This claim is only needed when
+   * the party requesting the ID token is not the same as the audience of the ID
+   * token. This may be the case at Google for hybrid apps where a web
+   * application and Android app have a different client_id but share the same
+   * project.
+   */
+  azp?: string;
+
+  /**
+   * Indicates whether your application can refresh access tokens
+   * when the user is not present at the browser. Valid parameter values are
+   * &#x27;online&#x27;, which is the default value, and &#x27;offline&#x27;. Set the value to
+   * &#x27;offline&#x27; if your application needs to refresh access tokens when the user
+   * is not present at the browser. This value instructs the Google
+   * authorization server to return a refresh token and an access token the
+   * first time that your application exchanges an authorization code for
+   * tokens.
+   */
+  access_type?: string;
+}
+
+interface TokenInfoRequest {
+  aud: string;
+  user_id?: string;
+  scope: string;
+  expires_in: number;
+  azp?: string;
+  sub?: string;
+  exp?: number;
+  access_type?: string;
+}
+
+export interface GenerateAuthUrlOpts {
+  /**
+   * Recommended. Indicates whether your application can refresh access tokens
+   * when the user is not present at the browser. Valid parameter values are
+   * &#x27;online&#x27;, which is the default value, and &#x27;offline&#x27;. Set the value to
+   * &#x27;offline&#x27; if your application needs to refresh access tokens when the user
+   * is not present at the browser. This value instructs the Google
+   * authorization server to return a refresh token and an access token the
+   * first time that your application exchanges an authorization code for
+   * tokens.
+   */
+  access_type?: string;
+
+  /**
+   * The hd (hosted domain) parameter streamlines the login process for G Suite
+   * hosted accounts. By including the domain of the G Suite user (for example,
+   * mycollege.edu), you can indicate that the account selection UI should be
+   * optimized for accounts at that domain. To optimize for G Suite accounts
+   * generally instead of just one domain, use an asterisk: hd&#x3D;*.
+   * Don&#x27;t rely on this UI optimization to control who can access your app,
+   * as client-side requests can be modified. Be sure to validate that the
+   * returned ID token has an hd claim value that matches what you expect
+   * (e.g. mycolledge.edu). Unlike the request parameter, the ID token claim is
+   * contained within a security token from Google, so the value can be trusted.
+   */
+  hd?: string;
+
+  /**
+   * The &#x27;response_type&#x27; will always be set to &#x27;CODE&#x27;.
+   */
+  response_type?: string;
+
+  /**
+   * The client ID for your application. The value passed into the constructor
+   * will be used if not provided. You can find this value in the API Console.
+   */
+  client_id?: string;
+
+  /**
+   * Determines where the API server redirects the user after the user
+   * completes the authorization flow. The value must exactly match one of the
+   * &#x27;redirect_uri&#x27; values listed for your project in the API Console. Note that
+   * the http or https scheme, case, and trailing slash (&#x27;/&#x27;) must all match.
+   * The value passed into the constructor will be used if not provided.
+   */
+  redirect_uri?: string;
+
+  /**
+   * Required. A space-delimited list of scopes that identify the resources that
+   * your application could access on the user&#x27;s behalf. These values inform the
+   * consent screen that Google displays to the user. Scopes enable your
+   * application to only request access to the resources that it needs while
+   * also enabling users to control the amount of access that they grant to your
+   * application. Thus, there is an inverse relationship between the number of
+   * scopes requested and the likelihood of obtaining user consent. The
+   * OAuth 2.0 API Scopes document provides a full list of scopes that you might
+   * use to access Google APIs. We recommend that your application request
+   * access to authorization scopes in context whenever possible. By requesting
+   * access to user data in context, via incremental authorization, you help
+   * users to more easily understand why your application needs the access it is
+   * requesting.
+   */
+  scope?: string[]|string;
+
+  /**
+   * Recommended. Specifies any string value that your application uses to
+   * maintain state between your authorization request and the authorization
+   * server&#x27;s response. The server returns the exact value that you send as a
+   * name&#x3D;value pair in the hash (#) fragment of the &#x27;redirect_uri&#x27; after the
+   * user consents to or denies your application&#x27;s access request. You can use
+   * this parameter for several purposes, such as directing the user to the
+   * correct resource in your application, sending nonces, and mitigating
+   * cross-site request forgery. Since your redirect_uri can be guessed, using a
+   * state value can increase your assurance that an incoming connection is the
+   * result of an authentication request. If you generate a random string or
+   * encode the hash of a cookie or another value that captures the client&#x27;s
+   * state, you can validate the response to additionally ensure that the
+   * request and response originated in the same browser, providing protection
+   * against attacks such as cross-site request forgery. See the OpenID Connect
+   * documentation for an example of how to create and confirm a state token.
+   */
+  state?: string;
+
+  /**
+   * Optional. Enables applications to use incremental authorization to request
+   * access to additional scopes in context. If you set this parameter&#x27;s value
+   * to true and the authorization request is granted, then the new access token
+   * will also cover any scopes to which the user previously granted the
+   * application access. See the incremental authorization section for examples.
+   */
+  include_granted_scopes?: boolean;
+
+  /**
+   * Optional. If your application knows which user is trying to authenticate,
+   * it can use this parameter to provide a hint to the Google Authentication
+   * Server. The server uses the hint to simplify the login flow either by
+   * prefilling the email field in the sign-in form or by selecting the
+   * appropriate multi-login session. Set the parameter value to an email
+   * address or sub identifier, which is equivalent to the user&#x27;s Google ID.
+   */
+  login_hint?: string;
+
+  /**
+   * Optional. A space-delimited, case-sensitive list of prompts to present the
+   * user. If you don&#x27;t specify this parameter, the user will be prompted only
+   * the first time your app requests access.  Possible values are:
+   *
+   * &#x27;none&#x27; - Donot display any authentication or consent screens. Must not be
+   *        specified with other values.
+   * &#x27;consent&#x27; - 	Prompt the user for consent.
+   * &#x27;select_account&#x27; - Prompt the user to select an account.
+   */
+  prompt?: string;
+
+  /**
+   * Recommended. Specifies what method was used to encode a &#x27;code_verifier&#x27;
+   * that will be used during authorization code exchange. This parameter must
+   * be used with the &#x27;code_challenge&#x27; parameter. The value of the
+   * &#x27;code_challenge_method&#x27; defaults to &quot;plain&quot; if not present in the request
+   * that includes a &#x27;code_challenge&#x27;. The only supported values for this
+   * parameter are &quot;S256&quot; or &quot;plain&quot;.
+   */
+  code_challenge_method?: CodeChallengeMethod;
+
+  /**
+   * Recommended. Specifies an encoded &#x27;code_verifier&#x27; that will be used as a
+   * server-side challenge during authorization code exchange. This parameter
+   * must be used with the &#x27;code_challenge&#x27; parameter described above.
+   */
+  code_challenge?: string;
+}
+
+export interface GetTokenCallback {
+  (err: AxiosError|null, token?: Credentials|null,
+   res?: AxiosResponse|null): void;
+}
+
+export interface GetTokenResponse {
+  tokens: Credentials;
+  res: AxiosResponse|null;
+}
+
+export interface GetAccessTokenCallback {
+  (err: AxiosError|null, token?: string|null, res?: AxiosResponse|null): void;
+}
+
+export interface GetAccessTokenResponse {
+  token?: string|null;
+  res?: AxiosResponse|null;
+}
+
+export interface RefreshAccessTokenCallback {
+  (err: AxiosError|null, credentials?: Credentials|null,
+   res?: AxiosResponse|null): void;
+}
+
+export interface RefreshAccessTokenResponse {
+  credentials: Credentials;
+  res: AxiosResponse|null;
+}
+
+export interface RequestMetadataResponse {
+  headers: Headers;
+  res?: AxiosResponse&lt;void&gt;|null;
+}
+
+export interface RequestMetadataCallback {
+  (err: AxiosError|null, headers?: Headers,
+   res?: AxiosResponse&lt;void&gt;|null): void;
+}
+
+export interface GetFederatedSignonCertsCallback {
+  (err: AxiosError|null, certs?: Certificates,
+   response?: AxiosResponse&lt;void&gt;|null): void;
+}
+
+export interface FederatedSignonCertsResponse {
+  certs: Certificates;
+  res?: AxiosResponse&lt;void&gt;|null;
+}
+
+export interface RevokeCredentialsResult {
+  success: boolean;
+}
+
+export interface VerifyIdTokenOptions {
+  idToken: string;
+  audience: string|string[];
+  maxExpiry?: number;
+}
+
+export interface OAuth2ClientOptions extends RefreshOptions {
+  clientId?: string;
+  clientSecret?: string;
+  redirectUri?: string;
+}
+
+export interface RefreshOptions {
+  // Eagerly refresh unexpired tokens when they are within this many
+  // milliseconds from expiring&quot;.
+  // Defaults to a value of 300000 (5 minutes).
+  eagerRefreshThresholdMillis?: number;
+}
+
+export class OAuth2Client extends AuthClient {
+  private redirectUri?: string;
+  private certificateCache?: Certificates;
+  private certificateExpiry: Date|null &#x3D; null;
+  protected refreshTokenPromises &#x3D; new Map&lt;string, Promise&lt;GetTokenResponse&gt;&gt;();
+
+  // TODO: refactor tests to make this private
+  _clientId?: string;
+
+  // TODO: refactor tests to make this private
+  _clientSecret?: string;
+
+  apiKey?: string;
+
+  projectId?: string;
+
+  eagerRefreshThresholdMillis: number;
+
+  /**
+   * Handles OAuth2 flow for Google APIs.
+   *
+   * @param clientId The authentication client ID.
+   * @param clientSecret The authentication client secret.
+   * @param redirectUri The URI to redirect to after completing the auth
+   * request.
+   * @param opts optional options for overriding the given parameters.
+   * @constructor
+   */
+  constructor(options?: OAuth2ClientOptions);
+  constructor(clientId?: string, clientSecret?: string, redirectUri?: string);
+  constructor(
+      optionsOrClientId?: string|OAuth2ClientOptions, clientSecret?: string,
+      redirectUri?: string) {
+    super();
+    const opts &#x3D; (optionsOrClientId &amp;&amp; typeof optionsOrClientId &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) ?
+        optionsOrClientId :
+        {clientId: optionsOrClientId, clientSecret, redirectUri};
+    this._clientId &#x3D; opts.clientId;
+    this._clientSecret &#x3D; opts.clientSecret;
+    this.redirectUri &#x3D; opts.redirectUri;
+    this.eagerRefreshThresholdMillis &#x3D;
+        opts.eagerRefreshThresholdMillis || 5 * 60 * 1000;
+  }
+
+  protected static readonly GOOGLE_TOKEN_INFO_URL &#x3D;
+      &#x27;https://oauth2.googleapis.com/tokeninfo&#x27;;
+
+  /**
+   * The base URL for auth endpoints.
+   */
+  private static readonly GOOGLE_OAUTH2_AUTH_BASE_URL_ &#x3D;
+      &#x27;https://accounts.google.com/o/oauth2/v2/auth&#x27;;
+
+  /**
+   * The base endpoint for token retrieval.
+   */
+  private static readonly GOOGLE_OAUTH2_TOKEN_URL_ &#x3D;
+      &#x27;https://oauth2.googleapis.com/token&#x27;;
+
+  /**
+   * The base endpoint to revoke tokens.
+   */
+  private static readonly GOOGLE_OAUTH2_REVOKE_URL_ &#x3D;
+      &#x27;https://oauth2.googleapis.com/revoke&#x27;;
+
+  /**
+   * Google Sign on certificates.
+   */
+  private static readonly GOOGLE_OAUTH2_FEDERATED_SIGNON_CERTS_URL_ &#x3D;
+      &#x27;https://www.googleapis.com/oauth2/v1/certs&#x27;;
+
+  /**
+   * Clock skew - five minutes in seconds
+   */
+  private static readonly CLOCK_SKEW_SECS_ &#x3D; 300;
+
+  /**
+   * Max Token Lifetime is one day in seconds
+   */
+  private static readonly MAX_TOKEN_LIFETIME_SECS_ &#x3D; 86400;
+
+  /**
+   * The allowed oauth token issuers.
+   */
+  private static readonly ISSUERS_ &#x3D;
+      [&#x27;accounts.google.com&#x27;, &#x27;https://accounts.google.com&#x27;];
+
+  /**
+   * Generates URL for consent page landing.
+   * @param opts Options.
+   * @return URL to consent page.
+   */
+  generateAuthUrl(opts: GenerateAuthUrlOpts &#x3D; {}) {
+    if (opts.code_challenge_method &amp;&amp; !opts.code_challenge) {
+      throw new Error(
+          &#x27;If a code_challenge_method is provided, code_challenge must be included.&#x27;);
+    }
+    opts.response_type &#x3D; opts.response_type || &#x27;code&#x27;;
+    opts.client_id &#x3D; opts.client_id || this._clientId;
+    opts.redirect_uri &#x3D; opts.redirect_uri || this.redirectUri;
+    // Allow scopes to be passed either as array or a string
+    if (opts.scope instanceof Array) {
+      opts.scope &#x3D; opts.scope.join(&#x27; &#x27;);
+    }
+    const rootUrl &#x3D; OAuth2Client.GOOGLE_OAUTH2_AUTH_BASE_URL_;
+    return rootUrl + &#x27;?&#x27; + querystring.stringify(opts);
+  }
+
+  /**
+   * Convenience method to automatically generate a code_verifier, and it&#x27;s
+   * resulting SHA256. If used, this must be paired with a S256
+   * code_challenge_method.
+   */
+  generateCodeVerifier() {
+    // base64 encoding uses 6 bits per character, and we want to generate128
+    // characters. 6*128/8 &#x3D; 96.
+    const randomString &#x3D; crypto.randomBytes(96).toString(&#x27;base64&#x27;);
+    // The valid characters in the code_verifier are [A-Z]/[a-z]/[0-9]/
+    // &quot;-&quot;/&quot;.&quot;/&quot;_&quot;/&quot;~&quot;. Base64 encoded strings are pretty close, so we&#x27;re just
+    // swapping out a few chars.
+    const codeVerifier &#x3D;
+        randomString.replace(/\+/g, &#x27;~&#x27;).replace(/&#x3D;/g, &#x27;_&#x27;).replace(/\//g, &#x27;-&#x27;);
+    // Generate the base64 encoded SHA256
+    const unencodedCodeChallenge &#x3D;
+        crypto.createHash(&#x27;sha256&#x27;).update(codeVerifier).digest(&#x27;base64&#x27;);
+    // We need to use base64UrlEncoding instead of standard base64
+    const codeChallenge &#x3D; unencodedCodeChallenge.split(&#x27;&#x3D;&#x27;)[0]
+                              .replace(/\+/g, &#x27;-&#x27;)
+                              .replace(/\//g, &#x27;_&#x27;);
+    return {codeVerifier, codeChallenge};
+  }
+
+  /**
+   * Gets the access token for the given code.
+   * @param code The authorization code.
+   * @param callback Optional callback fn.
+   */
+  getToken(code: string): Promise&lt;GetTokenResponse&gt;;
+  getToken(options: GetTokenOptions): Promise&lt;GetTokenResponse&gt;;
+  getToken(code: string, callback: GetTokenCallback): void;
+  getToken(options: GetTokenOptions, callback: GetTokenCallback): void;
+  getToken(codeOrOptions: string|GetTokenOptions, callback?: GetTokenCallback):
+      Promise&lt;GetTokenResponse&gt;|void {
+    const options &#x3D; (typeof codeOrOptions &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) ?
+        {code: codeOrOptions} :
+        codeOrOptions;
+    if (callback) {
+      this.getTokenAsync(options).then(
+          r &#x3D;&gt; callback(null, r.tokens, r.res),
+          e &#x3D;&gt; callback(e, null, e.response));
+    } else {
+      return this.getTokenAsync(options);
+    }
+  }
+
+  private async getTokenAsync(options: GetTokenOptions):
+      Promise&lt;GetTokenResponse&gt; {
+    const url &#x3D; OAuth2Client.GOOGLE_OAUTH2_TOKEN_URL_;
+    const values &#x3D; {
+      code: options.code,
+      client_id: options.client_id || this._clientId,
+      client_secret: this._clientSecret,
+      redirect_uri: options.redirect_uri || this.redirectUri,
+      grant_type: &#x27;authorization_code&#x27;,
+      code_verifier: options.codeVerifier
+    };
+    const res &#x3D; await this.transporter.request&lt;CredentialRequest&gt;({
+      method: &#x27;POST&#x27;,
+      url,
+      data: querystring.stringify(values),
+      headers: {&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;}
+    });
+    const tokens &#x3D; res.data as Credentials;
+    if (res.data &amp;&amp; res.data.expires_in) {
+      tokens.expiry_date &#x3D;
+          ((new Date()).getTime() + (res.data.expires_in * 1000));
+      delete (tokens as CredentialRequest).expires_in;
+    }
+    this.emit(&#x27;tokens&#x27;, tokens);
+    return {tokens, res};
+  }
+
+  /**
+   * Refreshes the access token.
+   * @param refresh_token Existing refresh token.
+   * @private
+   */
+  protected async refreshToken(refreshToken?: string|
+                               null): Promise&lt;GetTokenResponse&gt; {
+    if (!refreshToken) {
+      return this.refreshTokenNoCache(refreshToken);
+    }
+    // If a request to refresh using the same token has started,
+    // return the same promise.
+    if (this.refreshTokenPromises.has(refreshToken)) {
+      return this.refreshTokenPromises.get(refreshToken)!;
+    }
+
+    const p &#x3D; this.refreshTokenNoCache(refreshToken)
+                  .then(
+                      r &#x3D;&gt; {
+                        this.refreshTokenPromises.delete(refreshToken);
+                        return r;
+                      },
+                      e &#x3D;&gt; {
+                        this.refreshTokenPromises.delete(refreshToken);
+                        throw e;
+                      });
+    this.refreshTokenPromises.set(refreshToken, p);
+    return p;
+  }
+
+  protected async refreshTokenNoCache(refreshToken?: string|
+                                      null): Promise&lt;GetTokenResponse&gt; {
+    const url &#x3D; OAuth2Client.GOOGLE_OAUTH2_TOKEN_URL_;
+    const data &#x3D; {
+      refresh_token: refreshToken,
+      client_id: this._clientId,
+      client_secret: this._clientSecret,
+      grant_type: &#x27;refresh_token&#x27;
+    };
+
+    // request for new token
+    const res &#x3D; await this.transporter.request&lt;CredentialRequest&gt;({
+      method: &#x27;POST&#x27;,
+      url,
+      data: querystring.stringify(data),
+      headers: {&#x27;Content-Type&#x27;: &#x27;application/x-www-form-urlencoded&#x27;}
+    });
+
+    const tokens &#x3D; res.data as Credentials;
+    // TODO: de-duplicate this code from a few spots
+    if (res.data &amp;&amp; res.data.expires_in) {
+      tokens.expiry_date &#x3D;
+          ((new Date()).getTime() + (res.data.expires_in * 1000));
+      delete (tokens as CredentialRequest).expires_in;
+    }
+    this.emit(&#x27;tokens&#x27;, tokens);
+    return {tokens, res};
+  }
+
+  /**
+   * Retrieves the access token using refresh token
+   *
+   * @deprecated use getRequestHeaders instead.
+   * @param callback callback
+   */
+  refreshAccessToken(): Promise&lt;RefreshAccessTokenResponse&gt;;
+  refreshAccessToken(callback: RefreshAccessTokenCallback): void;
+  refreshAccessToken(callback?: RefreshAccessTokenCallback):
+      Promise&lt;RefreshAccessTokenResponse&gt;|void {
+    messages.warn(messages.REFRESH_ACCESS_TOKEN_DEPRECATED);
+    if (callback) {
+      this.refreshAccessTokenAsync().then(
+          r &#x3D;&gt; callback(null, r.credentials, r.res), callback);
+    } else {
+      return this.refreshAccessTokenAsync();
+    }
+  }
+
+  private async refreshAccessTokenAsync() {
+    if (!this.credentials.refresh_token) {
+      throw new Error(&#x27;No refresh token is set.&#x27;);
+    }
+    const r &#x3D; await this.refreshToken(this.credentials.refresh_token);
+    const tokens &#x3D; r.tokens as Credentials;
+    tokens.refresh_token &#x3D; this.credentials.refresh_token;
+    this.credentials &#x3D; tokens;
+    return {credentials: this.credentials, res: r.res};
+  }
+
+  /**
+   * Get a non-expired access token, after refreshing if necessary
+   *
+   * @param callback Callback to call with the access token
+   */
+  getAccessToken(): Promise&lt;GetAccessTokenResponse&gt;;
+  getAccessToken(callback: GetAccessTokenCallback): void;
+  getAccessToken(callback?: GetAccessTokenCallback):
+      Promise&lt;GetAccessTokenResponse&gt;|void {
+    if (callback) {
+      this.getAccessTokenAsync().then(
+          r &#x3D;&gt; callback(null, r.token, r.res), callback);
+    } else {
+      return this.getAccessTokenAsync();
+    }
+  }
+
+  private async getAccessTokenAsync(): Promise&lt;GetAccessTokenResponse&gt; {
+    const shouldRefresh &#x3D;
+        !this.credentials.access_token || this.isTokenExpiring();
+    if (shouldRefresh &amp;&amp; this.credentials.refresh_token) {
+      if (!this.credentials.refresh_token) {
+        throw new Error(&#x27;No refresh token is set.&#x27;);
+      }
+
+      const r &#x3D; await this.refreshAccessTokenAsync();
+      if (!r.credentials || (r.credentials &amp;&amp; !r.credentials.access_token)) {
+        throw new Error(&#x27;Could not refresh access token.&#x27;);
+      }
+      return {token: r.credentials.access_token, res: r.res};
+    } else {
+      return {token: this.credentials.access_token};
+    }
+  }
+
+  /**
+   * Obtain the set of headers required to authenticate a request.
+   *
+   * @deprecated Use getRequestHeaders instead.
+   * @param url the Uri being authorized
+   * @param callback the func described above
+   */
+  getRequestMetadata(url?: string|null): Promise&lt;RequestMetadataResponse&gt;;
+  getRequestMetadata(url: string|null, callback: RequestMetadataCallback): void;
+  getRequestMetadata(url: string|null, callback?: RequestMetadataCallback):
+      Promise&lt;RequestMetadataResponse&gt;|void {
+    messages.warn(messages.OAUTH_GET_REQUEST_METADATA_DEPRECATED);
+    if (callback) {
+      this.getRequestMetadataAsync(url).then(
+          r &#x3D;&gt; callback(null, r.headers, r.res), callback);
+    } else {
+      return this.getRequestMetadataAsync();
+    }
+  }
+
+  /**
+   * The main authentication interface.  It takes an optional url which when
+   * present is the endpoint being accessed, and returns a Promise which
+   * resolves with authorization header fields.
+   *
+   * In OAuth2Client, the result has the form:
+   * { Authorization: &#x27;Bearer &lt;access_token_value&gt;&#x27; }
+   * @param url The optional url being authorized
+   */
+  async getRequestHeaders(url?: string): Promise&lt;Headers&gt; {
+    const res &#x3D; await this.getRequestMetadataAsync(url);
+    return res.headers;
+  }
+
+  protected async getRequestMetadataAsync(url?: string|null):
+      Promise&lt;RequestMetadataResponse&gt; {
+    const thisCreds &#x3D; this.credentials;
+    if (!thisCreds.access_token &amp;&amp; !thisCreds.refresh_token &amp;&amp; !this.apiKey) {
+      throw new Error(&#x27;No access, refresh token or API key is set.&#x27;);
+    }
+
+    if (thisCreds.access_token &amp;&amp; !this.isTokenExpiring()) {
+      thisCreds.token_type &#x3D; thisCreds.token_type || &#x27;Bearer&#x27;;
+      const headers &#x3D; {
+        Authorization: thisCreds.token_type + &#x27; &#x27; + thisCreds.access_token
+      };
+      return {headers};
+    }
+
+    if (this.apiKey) {
+      return {headers: {}};
+    }
+    let r: GetTokenResponse|null &#x3D; null;
+    let tokens: Credentials|null &#x3D; null;
+    try {
+      r &#x3D; await this.refreshToken(thisCreds.refresh_token);
+      tokens &#x3D; r.tokens;
+    } catch (err) {
+      const e &#x3D; err as AxiosError;
+      if (e.response &amp;&amp;
+          (e.response.status &#x3D;&#x3D;&#x3D; 403 || e.response.status &#x3D;&#x3D;&#x3D; 404)) {
+        e.message &#x3D; &#x27;Could not refresh access token.&#x27;;
+      }
+      throw e;
+    }
+
+    const credentials &#x3D; this.credentials;
+    credentials.token_type &#x3D; credentials.token_type || &#x27;Bearer&#x27;;
+    tokens.refresh_token &#x3D; credentials.refresh_token;
+    this.credentials &#x3D; tokens;
+    const headers &#x3D; {
+      Authorization: credentials.token_type + &#x27; &#x27; + tokens.access_token
+    };
+    return {headers, res: r.res};
+  }
+
+  /**
+   * Revokes the access given to token.
+   * @param token The existing token to be revoked.
+   * @param callback Optional callback fn.
+   */
+  revokeToken(token: string): AxiosPromise&lt;RevokeCredentialsResult&gt;;
+  revokeToken(
+      token: string,
+      callback: BodyResponseCallback&lt;RevokeCredentialsResult&gt;): void;
+  revokeToken(
+      token: string, callback?: BodyResponseCallback&lt;RevokeCredentialsResult&gt;):
+      AxiosPromise&lt;RevokeCredentialsResult&gt;|void {
+    const opts &#x3D; {
+      url: OAuth2Client.GOOGLE_OAUTH2_REVOKE_URL_ + &#x27;?&#x27; +
+          querystring.stringify({token}),
+      method: &#x27;POST&#x27;
+    };
+    if (callback) {
+      this.transporter.request&lt;RevokeCredentialsResult&gt;(opts).then(
+          r &#x3D;&gt; callback(null, r), callback);
+    } else {
+      return this.transporter.request&lt;RevokeCredentialsResult&gt;(opts);
+    }
+  }
+
+
+  /**
+   * Revokes access token and clears the credentials object
+   * @param callback callback
+   */
+  revokeCredentials(): AxiosPromise&lt;RevokeCredentialsResult&gt;;
+  revokeCredentials(callback: BodyResponseCallback&lt;RevokeCredentialsResult&gt;):
+      void;
+  revokeCredentials(callback?: BodyResponseCallback&lt;RevokeCredentialsResult&gt;):
+      AxiosPromise&lt;RevokeCredentialsResult&gt;|void {
+    if (callback) {
+      this.revokeCredentialsAsync().then(res &#x3D;&gt; callback(null, res), callback);
+    } else {
+      return this.revokeCredentialsAsync();
+    }
+  }
+
+  private async revokeCredentialsAsync() {
+    const token &#x3D; this.credentials.access_token;
+    this.credentials &#x3D; {};
+    if (token) {
+      return this.revokeToken(token);
+    } else {
+      throw new Error(&#x27;No access token to revoke.&#x27;);
+    }
+  }
+
+  /**
+   * Provides a request implementation with OAuth 2.0 flow. If credentials have
+   * a refresh_token, in cases of HTTP 401 and 403 responses, it automatically
+   * asks for a new access token and replays the unsuccessful request.
+   * @param opts Request options.
+   * @param callback callback.
+   * @return Request object
+   */
+  request&lt;T&gt;(opts: AxiosRequestConfig): AxiosPromise&lt;T&gt;;
+  request&lt;T&gt;(opts: AxiosRequestConfig, callback: BodyResponseCallback&lt;T&gt;): void;
+  request&lt;T&gt;(opts: AxiosRequestConfig, callback?: BodyResponseCallback&lt;T&gt;):
+      AxiosPromise&lt;T&gt;|void {
+    if (callback) {
+      this.requestAsync&lt;T&gt;(opts).then(r &#x3D;&gt; callback(null, r), e &#x3D;&gt; {
+        return callback(e, e.response);
+      });
+    } else {
+      return this.requestAsync&lt;T&gt;(opts);
+    }
+  }
+
+  protected async requestAsync&lt;T&gt;(opts: AxiosRequestConfig, retry &#x3D; false):
+      Promise&lt;AxiosResponse&lt;T&gt;&gt; {
+    let r2: AxiosResponse;
+    try {
+      const r &#x3D; await this.getRequestMetadataAsync(opts.url);
+      if (r.headers &amp;&amp; r.headers.Authorization) {
+        opts.headers &#x3D; opts.headers || {};
+        opts.headers.Authorization &#x3D; r.headers.Authorization;
+      }
+
+      if (this.apiKey) {
+        opts.params &#x3D; Object.assign(opts.params || {}, {key: this.apiKey});
+      }
+      r2 &#x3D; await this.transporter.request&lt;T&gt;(opts);
+    } catch (e) {
+      const res &#x3D; (e as AxiosError).response;
+      if (res) {
+        const statusCode &#x3D; res.status;
+        // Retry the request for metadata if the following criteria are true:
+        // - We haven&#x27;t already retried.  It only makes sense to retry once.
+        // - The response was a 401 or a 403
+        // - The request didn&#x27;t send a readableStream
+        // - An access_token and refresh_token were available, but no
+        //   expiry_date was availabe. This can happen when developers stash
+        //   the access_token and refresh_token for later use, but the
+        //   access_token fails on the first try because it&#x27;s expired.
+        const mayRequireRefresh &#x3D; this.credentials &amp;&amp;
+            this.credentials.access_token &amp;&amp; this.credentials.refresh_token &amp;&amp;
+            !this.credentials.expiry_date;
+        const isReadableStream &#x3D; res.config.data instanceof stream.Readable;
+        const isAuthErr &#x3D; statusCode &#x3D;&#x3D;&#x3D; 401 || statusCode &#x3D;&#x3D;&#x3D; 403;
+        if (!retry &amp;&amp; isAuthErr &amp;&amp; !isReadableStream &amp;&amp; mayRequireRefresh) {
+          await this.refreshAccessTokenAsync();
+          return this.requestAsync&lt;T&gt;(opts, true);
+        }
+      }
+      throw e;
+    }
+    return r2;
+  }
+
+  /**
+   * Verify id token is token by checking the certs and audience
+   * @param options that contains all options.
+   * @param callback Callback supplying GoogleLogin if successful
+   */
+  verifyIdToken(options: VerifyIdTokenOptions): Promise&lt;LoginTicket&gt;;
+  verifyIdToken(
+      options: VerifyIdTokenOptions,
+      callback: (err: Error|null, login?: LoginTicket) &#x3D;&gt; void): void;
+  verifyIdToken(
+      options: VerifyIdTokenOptions,
+      callback?: (err: Error|null, login?: LoginTicket) &#x3D;&gt; void):
+      void|Promise&lt;LoginTicket&gt; {
+    // This function used to accept two arguments instead of an options object.
+    // Check the types to help users upgrade with less pain.
+    // This check can be removed after a 2.0 release.
+    if (callback &amp;&amp; typeof callback !&#x3D;&#x3D; &#x27;function&#x27;) {
+      throw new Error(
+          &#x27;This method accepts an options object as the first parameter, which includes the idToken, audience, and maxExpiry.&#x27;);
+    }
+
+    if (callback) {
+      this.verifyIdTokenAsync(options).then(r &#x3D;&gt; callback(null, r), callback);
+    } else {
+      return this.verifyIdTokenAsync(options);
+    }
+  }
+
+  private async verifyIdTokenAsync(options: VerifyIdTokenOptions):
+      Promise&lt;LoginTicket&gt; {
+    if (!options.idToken) {
+      throw new Error(&#x27;The verifyIdToken method requires an ID Token&#x27;);
+    }
+
+    const response &#x3D; await this.getFederatedSignonCertsAsync();
+    const login &#x3D; this.verifySignedJwtWithCerts(
+        options.idToken, response.certs, options.audience,
+        OAuth2Client.ISSUERS_, options.maxExpiry);
+
+    return login;
+  }
+
+  /**
+   * Obtains information about the provisioned access token.  Especially useful
+   * if you want to check the scopes that were provisioned to a given token.
+   *
+   * @param accessToken Required.  The Access Token for which you want to get
+   * user info.
+   */
+  async getTokenInfo(accessToken: string): Promise&lt;TokenInfo&gt; {
+    const {data} &#x3D; await this.transporter.request&lt;TokenInfoRequest&gt;({
+      method: &#x27;GET&#x27;,
+      url: OAuth2Client.GOOGLE_TOKEN_INFO_URL,
+      params: {access_token: accessToken}
+    });
+    const info &#x3D; Object.assign(
+        {
+          expiry_date: ((new Date()).getTime() + (data.expires_in * 1000)),
+          scopes: data.scope.split(&#x27; &#x27;)
+        },
+        data);
+    delete info.expires_in;
+    delete info.scope;
+    return info;
+  }
+
+  /**
+   * Gets federated sign-on certificates to use for verifying identity tokens.
+   * Returns certs as array structure, where keys are key ids, and values
+   * are PEM encoded certificates.
+   * @param callback Callback supplying the certificates
+   */
+  getFederatedSignonCerts(): Promise&lt;FederatedSignonCertsResponse&gt;;
+  getFederatedSignonCerts(callback: GetFederatedSignonCertsCallback): void;
+  getFederatedSignonCerts(callback?: GetFederatedSignonCertsCallback):
+      Promise&lt;FederatedSignonCertsResponse&gt;|void {
+    if (callback) {
+      this.getFederatedSignonCertsAsync().then(
+          r &#x3D;&gt; callback(null, r.certs, r.res), callback);
+    } else {
+      return this.getFederatedSignonCertsAsync();
+    }
+  }
+
+  async getFederatedSignonCertsAsync(): Promise&lt;FederatedSignonCertsResponse&gt; {
+    const nowTime &#x3D; (new Date()).getTime();
+    if (this.certificateExpiry &amp;&amp;
+        (nowTime &lt; this.certificateExpiry.getTime())) {
+      return {certs: this.certificateCache!};
+    }
+    let res: AxiosResponse;
+    try {
+      res &#x3D; await this.transporter.request(
+          {url: OAuth2Client.GOOGLE_OAUTH2_FEDERATED_SIGNON_CERTS_URL_});
+    } catch (e) {
+      throw new Error(&#x27;Failed to retrieve verification certificates: &#x27; + e);
+    }
+
+    const cacheControl &#x3D; res ? res.headers[&#x27;cache-control&#x27;] : undefined;
+    let cacheAge &#x3D; -1;
+    if (cacheControl) {
+      const pattern &#x3D; new RegExp(&#x27;max-age&#x3D;([0-9]*)&#x27;);
+      const regexResult &#x3D; pattern.exec(cacheControl as string);
+      if (regexResult &amp;&amp; regexResult.length &#x3D;&#x3D;&#x3D; 2) {
+        // Cache results with max-age (in seconds)
+        cacheAge &#x3D; Number(regexResult[1]) * 1000;  // milliseconds
+      }
+    }
+
+    const now &#x3D; new Date();
+    this.certificateExpiry &#x3D;
+        cacheAge &#x3D;&#x3D;&#x3D; -1 ? null : new Date(now.getTime() + cacheAge);
+    this.certificateCache &#x3D; res.data;
+    return {certs: res.data, res};
+  }
+
+  /**
+   * Verify the id token is signed with the correct certificate
+   * and is from the correct audience.
+   * @param jwt The jwt to verify (The ID Token in this case).
+   * @param certs The array of certs to test the jwt against.
+   * @param requiredAudience The audience to test the jwt against.
+   * @param issuers The allowed issuers of the jwt (Optional).
+   * @param maxExpiry The max expiry the certificate can be (Optional).
+   * @return Returns a LoginTicket on verification.
+   */
+  verifySignedJwtWithCerts(
+      jwt: string, certs: Certificates, requiredAudience: string|string[],
+      issuers?: string[], maxExpiry?: number) {
+    if (!maxExpiry) {
+      maxExpiry &#x3D; OAuth2Client.MAX_TOKEN_LIFETIME_SECS_;
+    }
+
+    const segments &#x3D; jwt.split(&#x27;.&#x27;);
+    if (segments.length !&#x3D;&#x3D; 3) {
+      throw new Error(&#x27;Wrong number of segments in token: &#x27; + jwt);
+    }
+    const signed &#x3D; segments[0] + &#x27;.&#x27; + segments[1];
+    const signature &#x3D; segments[2];
+
+    let envelope;
+    let payload: TokenPayload;
+
+    try {
+      envelope &#x3D; JSON.parse(this.decodeBase64(segments[0]));
+    } catch (err) {
+      throw new Error(&#x27;Can\&#x27;t parse token envelope: &#x27; + segments[0]);
+    }
+
+    if (!envelope) {
+      throw new Error(&#x27;Can\&#x27;t parse token envelope: &#x27; + segments[0]);
+    }
+
+    try {
+      payload &#x3D; JSON.parse(this.decodeBase64(segments[1]));
+    } catch (err) {
+      throw new Error(&#x27;Can\&#x27;t parse token payload: &#x27; + segments[0]);
+    }
+
+    if (!payload) {
+      throw new Error(&#x27;Can\&#x27;t parse token payload: &#x27; + segments[1]);
+    }
+
+    if (!certs.hasOwnProperty(envelope.kid)) {
+      // If this is not present, then there&#x27;s no reason to attempt verification
+      throw new Error(&#x27;No pem found for envelope: &#x27; + JSON.stringify(envelope));
+    }
+    const pem &#x3D; certs[envelope.kid];
+    const pemVerifier &#x3D; new PemVerifier();
+    const verified &#x3D; pemVerifier.verify(pem, signed, signature, &#x27;base64&#x27;);
+
+    if (!verified) {
+      throw new Error(&#x27;Invalid token signature: &#x27; + jwt);
+    }
+
+    if (!payload.iat) {
+      throw new Error(&#x27;No issue time in token: &#x27; + JSON.stringify(payload));
+    }
+
+    if (!payload.exp) {
+      throw new Error(
+          &#x27;No expiration time in token: &#x27; + JSON.stringify(payload));
+    }
+
+    const iat &#x3D; Number(payload.iat);
+    if (isNaN(iat)) throw new Error(&#x27;iat field using invalid format&#x27;);
+
+    const exp &#x3D; Number(payload.exp);
+    if (isNaN(exp)) throw new Error(&#x27;exp field using invalid format&#x27;);
+
+    const now &#x3D; new Date().getTime() / 1000;
+
+    if (exp &gt;&#x3D; now + maxExpiry) {
+      throw new Error(
+          &#x27;Expiration time too far in future: &#x27; + JSON.stringify(payload));
+    }
+
+    const earliest &#x3D; iat - OAuth2Client.CLOCK_SKEW_SECS_;
+    const latest &#x3D; exp + OAuth2Client.CLOCK_SKEW_SECS_;
+
+    if (now &lt; earliest) {
+      throw new Error(
+          &#x27;Token used too early, &#x27; + now + &#x27; &lt; &#x27; + earliest + &#x27;: &#x27; +
+          JSON.stringify(payload));
+    }
+
+    if (now &gt; latest) {
+      throw new Error(
+          &#x27;Token used too late, &#x27; + now + &#x27; &gt; &#x27; + latest + &#x27;: &#x27; +
+          JSON.stringify(payload));
+    }
+
+    if (issuers &amp;&amp; issuers.indexOf(payload.iss) &lt; 0) {
+      throw new Error(
+          &#x27;Invalid issuer, expected one of [&#x27; + issuers + &#x27;], but got &#x27; +
+          payload.iss);
+    }
+
+    // Check the audience matches if we have one
+    if (typeof requiredAudience !&#x3D;&#x3D; &#x27;undefined&#x27; &amp;&amp; requiredAudience !&#x3D;&#x3D; null) {
+      const aud &#x3D; payload.aud;
+      let audVerified &#x3D; false;
+      // If the requiredAudience is an array, check if it contains token
+      // audience
+      if (requiredAudience.constructor &#x3D;&#x3D;&#x3D; Array) {
+        audVerified &#x3D; (requiredAudience.indexOf(aud) &gt; -1);
+      } else {
+        audVerified &#x3D; (aud &#x3D;&#x3D;&#x3D; requiredAudience);
+      }
+      if (!audVerified) {
+        throw new Error(
+            &#x27;Wrong recipient, payload audience !&#x3D; requiredAudience&#x27;);
+      }
+    }
+    return new LoginTicket(envelope, payload);
+  }
+
+  /**
+   * This is a utils method to decode a base64 string
+   * @param b64String The string to base64 decode
+   * @return The decoded string
+   */
+  decodeBase64(b64String: string) {
+    const buffer &#x3D; Buffer.from(b64String, &#x27;base64&#x27;);
+    return buffer.toString(&#x27;utf8&#x27;);
+  }
+
+  /**
+   * Returns true if a token is expired or will expire within
+   * eagerRefreshThresholdMillismilliseconds.
+   * If there is no expiry time, assumes the token is not expired or expiring.
+   */
+  protected isTokenExpiring(): boolean {
+    const expiryDate &#x3D; this.credentials.expiry_date;
+    return expiryDate ? expiryDate &lt;&#x3D;
+            ((new Date()).getTime() + this.eagerRefreshThresholdMillis) :
+                        false;
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'GetAccessTokenCallback.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

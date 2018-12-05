@@ -1,0 +1,824 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>google-auth-library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">google-auth-library documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#auth" title="src/index.ts"><b>auth</b>&nbsp;&nbsp;&nbsp;(src/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CLOUD_SDK_CLIENT_ID" title="src/auth/googleauth.ts"><b>CLOUD_SDK_CLIENT_ID</b>&nbsp;&nbsp;&nbsp;(src/.../googleauth.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#COMPUTE_CREATE_SCOPED_DEPRECATED" title="src/messages.ts"><b>COMPUTE_CREATE_SCOPED_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_HEADER" title="src/auth/jwtaccess.ts"><b>DEFAULT_HEADER</b>&nbsp;&nbsp;&nbsp;(src/.../jwtaccess.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_PROJECT_ID_DEPRECATED" title="src/messages.ts"><b>DEFAULT_PROJECT_ID_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#env" title="src/auth/envDetect.ts"><b>env</b>&nbsp;&nbsp;&nbsp;(src/.../envDetect.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#HttpsProxyAgent" title="src/transporters.ts"><b>HttpsProxyAgent</b>&nbsp;&nbsp;&nbsp;(src/.../transporters.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IAM_CREATE_SCOPED_DEPRECATED" title="src/messages.ts"><b>IAM_CREATE_SCOPED_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IAM_GET_REQUEST_METADATA_DEPRECATED" title="src/messages.ts"><b>IAM_GET_REQUEST_METADATA_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#JWT_ACCESS_CREATE_SCOPED_DEPRECATED" title="src/messages.ts"><b>JWT_ACCESS_CREATE_SCOPED_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED" title="src/messages.ts"><b>JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#JWT_CREATE_SCOPED_DEPRECATED" title="src/messages.ts"><b>JWT_CREATE_SCOPED_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#OAUTH_GET_REQUEST_METADATA_DEPRECATED" title="src/messages.ts"><b>OAUTH_GET_REQUEST_METADATA_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#pkg" title="src/transporters.ts"><b>pkg</b>&nbsp;&nbsp;&nbsp;(src/.../transporters.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PROBLEMATIC_CREDENTIALS_WARNING" title="src/messages.ts"><b>PROBLEMATIC_CREDENTIALS_WARNING</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PRODUCT_NAME" title="src/transporters.ts"><b>PRODUCT_NAME</b>&nbsp;&nbsp;&nbsp;(src/.../transporters.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#REFRESH_ACCESS_TOKEN_DEPRECATED" title="src/messages.ts"><b>REFRESH_ACCESS_TOKEN_DEPRECATED</b>&nbsp;&nbsp;&nbsp;(src/.../messages.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/index.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="auth"></a>
+                        <span class="name">
+                            <b>
+                            auth
+                            </b>
+                            <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>auth:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new GoogleAuth()</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/auth/googleauth.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="CLOUD_SDK_CLIENT_ID"></a>
+                        <span class="name">
+                            <b>
+                            CLOUD_SDK_CLIENT_ID
+                            </b>
+                            <a href="#CLOUD_SDK_CLIENT_ID"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>CLOUD_SDK_CLIENT_ID:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/messages.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="COMPUTE_CREATE_SCOPED_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            COMPUTE_CREATE_SCOPED_DEPRECATED
+                            </b>
+                            <a href="#COMPUTE_CREATE_SCOPED_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>COMPUTE_CREATE_SCOPED_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP003&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;createScopedRequired&#x60; method on the &#x60;Compute&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DEFAULT_PROJECT_ID_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            DEFAULT_PROJECT_ID_DEPRECATED
+                            </b>
+                            <a href="#DEFAULT_PROJECT_ID_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>DEFAULT_PROJECT_ID_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP002&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;getDefaultProjectId&#x60; method has been deprecated, and will be removed&#x27;,
+    &#x27;in the 3.0 release of google-auth-library. Please use the &#x60;getProjectId&#x60;&#x27;,
+    &#x27;method instead.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="IAM_CREATE_SCOPED_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            IAM_CREATE_SCOPED_DEPRECATED
+                            </b>
+                            <a href="#IAM_CREATE_SCOPED_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>IAM_CREATE_SCOPED_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP005&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;createScopedRequired&#x60; method on the &#x60;IAM&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="IAM_GET_REQUEST_METADATA_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            IAM_GET_REQUEST_METADATA_DEPRECATED
+                            </b>
+                            <a href="#IAM_GET_REQUEST_METADATA_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>IAM_GET_REQUEST_METADATA_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP005&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;getRequestMetadata&#x60; method on the &#x60;IAM&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library. Please use&#x27;,
+    &#x27;the &#x60;getRequestHeaders&#x60; method instead.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="JWT_ACCESS_CREATE_SCOPED_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            JWT_ACCESS_CREATE_SCOPED_DEPRECATED
+                            </b>
+                            <a href="#JWT_ACCESS_CREATE_SCOPED_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>JWT_ACCESS_CREATE_SCOPED_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP006&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;createScopedRequired&#x60; method on the &#x60;JWTAccess&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED
+                            </b>
+                            <a href="#JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>JWT_ACCESS_GET_REQUEST_METADATA_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP006&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;getRequestMetadata&#x60; method on the &#x60;JWTAccess&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library. Please use&#x27;,
+    &#x27;the &#x60;getRequestHeaders&#x60; method instead.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="JWT_CREATE_SCOPED_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            JWT_CREATE_SCOPED_DEPRECATED
+                            </b>
+                            <a href="#JWT_CREATE_SCOPED_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>JWT_CREATE_SCOPED_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP004&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;createScopedRequired&#x60; method on the &#x60;JWT&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="OAUTH_GET_REQUEST_METADATA_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            OAUTH_GET_REQUEST_METADATA_DEPRECATED
+                            </b>
+                            <a href="#OAUTH_GET_REQUEST_METADATA_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>OAUTH_GET_REQUEST_METADATA_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP004&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;getRequestMetadata&#x60; method on the &#x60;OAuth2&#x60; class has been deprecated,&#x27;,
+    &#x27;and will be removed in the 3.0 release of google-auth-library. Please use&#x27;,
+    &#x27;the &#x60;getRequestHeaders&#x60; method instead.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PROBLEMATIC_CREDENTIALS_WARNING"></a>
+                        <span class="name">
+                            <b>
+                            PROBLEMATIC_CREDENTIALS_WARNING
+                            </b>
+                            <a href="#PROBLEMATIC_CREDENTIALS_WARNING"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>PROBLEMATIC_CREDENTIALS_WARNING:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:00001&#x27;,
+  type: WarningTypes.WARNING,
+  message: [
+    &#x27;Your application has authenticated using end user credentials from Google&#x27;,
+    &#x27;Cloud SDK. We recommend that most server applications use service accounts&#x27;,
+    &#x27;instead. If your application continues to use end user credentials from&#x27;,
+    &#x27;Cloud SDK, you might receive a &quot;quota exceeded&quot; or &quot;API not enabled&quot; error.&#x27;,
+    &#x27;For more information about service accounts, see&#x27;,
+    &#x27;https://cloud.google.com/docs/authentication/.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="REFRESH_ACCESS_TOKEN_DEPRECATED"></a>
+                        <span class="name">
+                            <b>
+                            REFRESH_ACCESS_TOKEN_DEPRECATED
+                            </b>
+                            <a href="#REFRESH_ACCESS_TOKEN_DEPRECATED"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>REFRESH_ACCESS_TOKEN_DEPRECATED:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  code: &#x27;google-auth-library:DEP007&#x27;,
+  type: WarningTypes.DEPRECATION,
+  message: [
+    &#x27;The &#x60;refreshAccessToken&#x60; method has been deprecated, and will be removed&#x27;,
+    &#x27;in the 3.0 release of google-auth-library. Please use the &#x60;getRequestHeaders&#x60;&#x27;,
+    &#x27;method instead.&#x27;
+  ].join(&#x27; &#x27;)
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/auth/jwtaccess.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DEFAULT_HEADER"></a>
+                        <span class="name">
+                            <b>
+                            DEFAULT_HEADER
+                            </b>
+                            <a href="#DEFAULT_HEADER"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>DEFAULT_HEADER:     <code>jws.Header</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>jws.Header</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  alg: &#x27;RS256&#x27;,
+  typ: &#x27;JWT&#x27;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/auth/envDetect.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="env"></a>
+                        <span class="name">
+                            <b>
+                            env
+                            </b>
+                            <a href="#env"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>env:     <code><a href="../miscellaneous/enumerations.html#GCPEnv" target="_self" >GCPEnv | undefined</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../miscellaneous/enumerations.html#GCPEnv" target="_self" >GCPEnv | undefined</a></code>
+
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/transporters.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="HttpsProxyAgent"></a>
+                        <span class="name">
+                            <b>
+                            HttpsProxyAgent
+                            </b>
+                            <a href="#HttpsProxyAgent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>HttpsProxyAgent:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>require(&#x27;https-proxy-agent&#x27;)</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pkg"></a>
+                        <span class="name">
+                            <b>
+                            pkg
+                            </b>
+                            <a href="#pkg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>pkg:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>require(&#x27;../../package.json&#x27;)</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PRODUCT_NAME"></a>
+                        <span class="name">
+                            <b>
+                            PRODUCT_NAME
+                            </b>
+                            <a href="#PRODUCT_NAME"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>PRODUCT_NAME:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;google-api-nodejs-client&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
